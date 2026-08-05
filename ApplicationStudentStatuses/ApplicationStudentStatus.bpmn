@@ -2,12 +2,6 @@
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_0mkn16l" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.22.0">
   <bpmn:collaboration id="Collaboration_0lmedk4">
     <bpmn:participant id="Participant_0cjprq7" name="DLSU Student Application" processRef="Process_056vlpa" />
-    <bpmn:textAnnotation id="TextAnnotation_0df51ll">
-      <bpmn:text>DMN Table: evaluate_applicant_rules
-Inputs: docs_complete, exam_exempt
-Output: next_state</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:association id="Association_0k09iz9" associationDirection="None" sourceRef="Activity_0l7oyy4" targetRef="TextAnnotation_0df51ll" />
     <bpmn:textAnnotation id="TextAnnotation_0jk3n34">
       <bpmn:text>[ADDED TASK] Should be considered a different task from compiling requirements.</bpmn:text>
     </bpmn:textAnnotation>
@@ -18,7 +12,6 @@ Output: next_state</bpmn:text>
       <bpmn:lane id="Lane_1eaxibt" name="Applicant">
         <bpmn:flowNodeRef>Event_0jpjsmy</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_02kqoo2</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1ldip58</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0m5sy8q</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1osq7b5</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0jcq7kv</bpmn:flowNodeRef>
@@ -62,6 +55,7 @@ Output: next_state</bpmn:text>
         <bpmn:flowNodeRef>Activity_165zskj</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_1as7ynn</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_15sj4gg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1ldip58</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_171cco5" name="DLSU OAS/OASIS">
         <bpmn:flowNodeRef>Activity_1ps6ev3</bpmn:flowNodeRef>
@@ -101,6 +95,8 @@ Output: next_state</bpmn:text>
         <bpmn:flowNodeRef>Event_1h2dz7h</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0qzyr3g</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0se11cn</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_02zkltf</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_096qc71</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:intermediateThrowEvent id="Event_0jpjsmy" name="Catch requirement notice">
@@ -110,10 +106,6 @@ Output: next_state</bpmn:text>
     <bpmn:task id="Activity_02kqoo2" name="Create admission application account">
       <bpmn:incoming>Flow_11zqej5</bpmn:incoming>
       <bpmn:outgoing>Flow_0qxi4kr</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:task id="Activity_1ldip58" name="Compile and draft admission application requirements">
-      <bpmn:incoming>Flow_0qxi4kr</bpmn:incoming>
-      <bpmn:outgoing>Flow_1j0mumy</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Activity_1ps6ev3" name="Release admission application requirements">
       <bpmn:incoming>Flow_0rnirc7</bpmn:incoming>
@@ -130,7 +122,7 @@ Output: next_state</bpmn:text>
     <bpmn:sequenceFlow id="Flow_0n8ct8a" sourceRef="Activity_1ps6ev3" targetRef="Event_0jpjsmy" />
     <bpmn:sequenceFlow id="Flow_11zqej5" sourceRef="Event_0jpjsmy" targetRef="Activity_02kqoo2" />
     <bpmn:sequenceFlow id="Flow_0qxi4kr" sourceRef="Activity_02kqoo2" targetRef="Activity_1ldip58" />
-    <bpmn:sequenceFlow id="Flow_1j0mumy" sourceRef="Activity_1ldip58" targetRef="Activity_1osq7b5" />
+    <bpmn:sequenceFlow id="Flow_1j0mumy" name="A0: Draft" sourceRef="Activity_1ldip58" targetRef="Activity_1osq7b5" />
     <bpmn:sequenceFlow id="Flow_0rnirc7" sourceRef="Event_1wops1g" targetRef="Activity_1ps6ev3" />
     <bpmn:sequenceFlow id="Flow_1abuoe8" name="A2.1: Submitted - with Deficiencies" sourceRef="Gateway_1mxsgn7" targetRef="Event_02w14ms" />
     <bpmn:sequenceFlow id="Flow_0wfv7ew" sourceRef="Activity_1umkn71" targetRef="Gateway_0m5sy8q" />
@@ -207,9 +199,11 @@ Output: next_state</bpmn:text>
       <bpmn:outgoing>Flow_124q9ve</bpmn:outgoing>
       <bpmn:outgoing>Flow_1m8kokp</bpmn:outgoing>
       <bpmn:outgoing>Flow_1gfhuaf</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1lgzymc</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:intermediateThrowEvent id="Event_0570nzi" name="Notice of rejection sent">
       <bpmn:incoming>Flow_124q9ve</bpmn:incoming>
+      <bpmn:incoming>Flow_0uuqrc5</bpmn:incoming>
       <bpmn:outgoing>Flow_1jp7vla</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_1w67ofs" />
     </bpmn:intermediateThrowEvent>
@@ -501,6 +495,7 @@ Output: next_state</bpmn:text>
     </bpmn:intermediateCatchEvent>
     <bpmn:intermediateThrowEvent id="Event_1gz8amm" name="Offer letter sent">
       <bpmn:incoming>Flow_1gfhuaf</bpmn:incoming>
+      <bpmn:incoming>Flow_0bvbbu2</bpmn:incoming>
       <bpmn:outgoing>Flow_14wayer</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_0z4r2ww" />
     </bpmn:intermediateThrowEvent>
@@ -522,7 +517,7 @@ Output: next_state</bpmn:text>
       <bpmn:outgoing>Flow_0u118n3</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_1e875ok" />
     </bpmn:intermediateCatchEvent>
-    <bpmn:sequenceFlow id="Flow_0ijyh5t" sourceRef="Event_1h2dz7h" targetRef="Event_0qoe3ap" />
+    <bpmn:sequenceFlow id="Flow_0ijyh5t" name="A7.1: Provisionally admitted" sourceRef="Event_1h2dz7h" targetRef="Event_0qoe3ap" />
     <bpmn:intermediateThrowEvent id="Event_0qzyr3g" name="Notice of official admission sent">
       <bpmn:incoming>Flow_1t0i1go</bpmn:incoming>
       <bpmn:incoming>Flow_19zgugc</bpmn:incoming>
@@ -581,6 +576,23 @@ Output: next_state</bpmn:text>
       <bpmn:incoming>Flow_1fyrf3g</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1fyrf3g" name="No" sourceRef="Gateway_1as7ynn" targetRef="Event_15sj4gg" />
+    <bpmn:sequenceFlow id="Flow_1lgzymc" name="A5.3: Waitlisted" sourceRef="Gateway_184j7jt" targetRef="Event_02zkltf" />
+    <bpmn:intermediateThrowEvent id="Event_02zkltf" name="Wait for slots to open up for waitlist applicant">
+      <bpmn:incoming>Flow_1lgzymc</bpmn:incoming>
+      <bpmn:outgoing>Flow_1r5g3a1</bpmn:outgoing>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:exclusiveGateway id="Gateway_096qc71" name="Did slots open up?">
+      <bpmn:incoming>Flow_1r5g3a1</bpmn:incoming>
+      <bpmn:outgoing>Flow_0uuqrc5</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0bvbbu2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1r5g3a1" sourceRef="Event_02zkltf" targetRef="Gateway_096qc71" />
+    <bpmn:sequenceFlow id="Flow_0uuqrc5" name="No" sourceRef="Gateway_096qc71" targetRef="Event_0570nzi" />
+    <bpmn:sequenceFlow id="Flow_0bvbbu2" name="Yes" sourceRef="Gateway_096qc71" targetRef="Event_1gz8amm" />
+    <bpmn:task id="Activity_1ldip58" name="Compile and draft admission application requirements">
+      <bpmn:incoming>Flow_0qxi4kr</bpmn:incoming>
+      <bpmn:outgoing>Flow_1j0mumy</bpmn:outgoing>
+    </bpmn:task>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0lmedk4">
@@ -604,10 +616,6 @@ Output: next_state</bpmn:text>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_02kqoo2_di" bpmnElement="Activity_02kqoo2">
         <dc:Bounds x="480" y="625" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1ldip58_di" bpmnElement="Activity_1ldip58">
-        <dc:Bounds x="630" y="625" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1ps6ev3_di" bpmnElement="Activity_1ps6ev3">
@@ -687,7 +695,7 @@ Output: next_state</bpmn:text>
       <bpmndi:BPMNShape id="Event_0phodck_di" bpmnElement="Event_0570nzi">
         <dc:Bounds x="2442" y="872" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2342.5" y="876.5" width="89" height="27" />
+          <dc:Bounds x="2364.5" y="856" width="89" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_011jxm7_di" bpmnElement="Event_0a1nkwc">
@@ -949,7 +957,7 @@ Output: next_state</bpmn:text>
       <bpmndi:BPMNShape id="Event_1jv4u7c_di" bpmnElement="Event_1gz8amm">
         <dc:Bounds x="2952" y="1012" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2866" y="1023" width="76" height="14" />
+          <dc:Bounds x="2998" y="1023" width="76" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0ufs172_di" bpmnElement="Gateway_1j9bzag">
@@ -1028,6 +1036,22 @@ Output: next_state</bpmn:text>
           <dc:Bounds x="3379" y="645" width="82" height="53" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_02zkltf_di" bpmnElement="Event_02zkltf">
+        <dc:Bounds x="2302" y="1332" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2280" y="1375" width="81" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_096qc71_di" bpmnElement="Gateway_096qc71" isMarkerVisible="true">
+        <dc:Bounds x="2395" y="1325" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2385" y="1382" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ldip58_di" bpmnElement="Activity_1ldip58">
+        <dc:Bounds x="650" y="625" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0n8ct8a_di" bpmnElement="Flow_0n8ct8a">
         <di:waypoint x="410" y="1050" />
         <di:waypoint x="410" y="683" />
@@ -1038,13 +1062,13 @@ Output: next_state</bpmn:text>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0qxi4kr_di" bpmnElement="Flow_0qxi4kr">
         <di:waypoint x="580" y="665" />
-        <di:waypoint x="630" y="665" />
+        <di:waypoint x="650" y="665" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1j0mumy_di" bpmnElement="Flow_1j0mumy">
-        <di:waypoint x="730" y="665" />
+        <di:waypoint x="750" y="665" />
         <di:waypoint x="880" y="665" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="788" y="647" width="44" height="14" />
+          <dc:Bounds x="818" y="647" width="44" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0rnirc7_di" bpmnElement="Flow_0rnirc7">
@@ -1430,6 +1454,9 @@ Output: next_state</bpmn:text>
       <bpmndi:BPMNEdge id="Flow_0ijyh5t_di" bpmnElement="Flow_0ijyh5t">
         <di:waypoint x="4520" y="832" />
         <di:waypoint x="4520" y="658" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="4452" y="720" width="76" height="40" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0qroooh_di" bpmnElement="Flow_0qroooh">
         <di:waypoint x="4360" y="832" />
@@ -1475,18 +1502,38 @@ Output: next_state</bpmn:text>
           <dc:Bounds x="3428" y="570.5" width="15" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_0df51ll_di" bpmnElement="TextAnnotation_0df51ll">
-        <dc:Bounds x="1010" y="1030" width="254.31185732319796" height="57" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1lgzymc_di" bpmnElement="Flow_1lgzymc">
+        <di:waypoint x="2320" y="1215" />
+        <di:waypoint x="2320" y="1332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2241" y="1263.5" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1r5g3a1_di" bpmnElement="Flow_1r5g3a1">
+        <di:waypoint x="2338" y="1350" />
+        <di:waypoint x="2395" y="1350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0uuqrc5_di" bpmnElement="Flow_0uuqrc5">
+        <di:waypoint x="2445" y="1350" />
+        <di:waypoint x="2460" y="1350" />
+        <di:waypoint x="2460" y="908" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2445" y="1303" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bvbbu2_di" bpmnElement="Flow_0bvbbu2">
+        <di:waypoint x="2445" y="1350" />
+        <di:waypoint x="2590" y="1350" />
+        <di:waypoint x="2590" y="1030" />
+        <di:waypoint x="2952" y="1030" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2481" y="1333" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_0jk3n34_di" bpmnElement="TextAnnotation_0jk3n34">
         <dc:Bounds x="750" y="390" width="310" height="43" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_0k09iz9_di" bpmnElement="Association_0k09iz9">
-        <di:waypoint x="980" y="1050" />
-        <di:waypoint x="1010" y="1050" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_1aew2sc_di" bpmnElement="Association_1aew2sc">
         <di:waypoint x="800" y="480" />
         <di:waypoint x="800" y="433" />
