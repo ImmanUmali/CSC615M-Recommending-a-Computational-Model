@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="studentStatuses" name="Student Statuses DMN" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.49.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+  <decision id="determineAcademicStatus" name="Determine Academic Status">
+    <decisionTable id="DecisionTable_0p78err">
+      <input id="Input_1" label="Current Status">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1edcvc3">
+          <text>"Active","Active - Without Enrollment","Inactive - Suspended","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL","Graduated","Exited on Good Standing","Exited - Permanent Disqualification"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0dhz8wo" label="Event">
+        <inputExpression id="LiteralExpression_1ap5xy4" typeRef="Any">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0gp7wp7" label="Additional Condition" biodi:width="192">
+        <inputExpression id="LiteralExpression_0t43i3c" typeRef="Any">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Next Status" typeRef="string">
+        <outputValues id="UnaryTests_0sduoan">
+          <text>"Active","Active - Without Enrollment","Inactive - Suspended","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL","Graduated","Exited on Good Standing","Exited - Permanent Disqualification"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_1fcf3iy">
+        <inputEntry id="UnaryTests_0fo61ea">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ahc9iv">
+          <text>Register residency</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ukrsc7">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ue31hx">
+          <text>"Active - Residency"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0q32c8s">
+        <inputEntry id="UnaryTests_1xxbm2o">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vbf58u">
+          <text>File LOA</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dv34re">
+          <text>LOA ≤ maximum</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0u4y0ob">
+          <text>"Active - LOA"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0d4l7ok">
+        <inputEntry id="UnaryTests_1r2pngy">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ivs4zn">
+          <text>Did not enroll</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e6kiqq">
+          <text>&gt; 6 trimesters</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e11j27">
+          <text>"Inactive - Prolonged Leave"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07odm0j">
+        <inputEntry id="UnaryTests_1si5qpg">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05tc1cu">
+          <text>Did not enroll</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lqeufg">
+          <text>No LOA + ≤ 6 trimesters</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10q8b6h">
+          <text>"Inactive - AWOL"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1on7nfw">
+        <inputEntry id="UnaryTests_0fuo74b">
+          <text>"Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wtj4k8">
+          <text>Approved returnee</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gd6dyy">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0je2mha">
+          <text>"Active"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0b6udag">
+        <inputEntry id="UnaryTests_19g7ss0">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08xp6qm">
+          <text>Graduation assessment</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xhielj">
+          <text>All programs graduated</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ys4hbp">
+          <text>"Graduated"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="determineEnrollment" name="Determine Enrollment">
+    <decisionTable id="DecisionTable_0q7gkz5">
+      <input id="InputClause_02p1c7e" label="Current Status">
+        <inputExpression id="LiteralExpression_00hpcr0" typeRef="string" />
+        <inputValues id="UnaryTests_0vj3usq">
+          <text>"Active","Active - Without Enrollment","Inactive - Suspended","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL","Graduated","Exited on Good Standing","Exited - Permanent Disqualification"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_163qsts" label="Event">
+        <inputExpression id="LiteralExpression_1cn3a90" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0gg9rss" label="Additional Condition">
+        <inputExpression id="LiteralExpression_0ob9mwd" typeRef="Any">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1ofgjj2" label="Next Status" typeRef="string">
+        <outputValues id="UnaryTests_1f9wqg4">
+          <text>"Active","Active - Without Enrollment","Inactive - Suspended","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL","Graduated","Exited on Good Standing","Exited - Permanent Disqualification"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_1twt8id">
+        <inputEntry id="UnaryTests_0tvc779">
+          <text>"Active - Without Enrollment","Active - Residency"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13nwo54">
+          <text>Student enrolled</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_098nfy8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0iaf324">
+          <text>"Active"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xdyysq">
+        <inputEntry id="UnaryTests_0eus5v3">
+          <text>"Inactive - Suspended"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cmyci0">
+          <text>Student enrolled</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dxb63e">
+          <text>Suspension lifted</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rkf2pf">
+          <text>"Active"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="evaluateExit" name="Evaluate Exit">
+    <decisionTable id="DecisionTable_0ho646f">
+      <input id="InputClause_0qe5ich" label="Current Status">
+        <inputExpression id="LiteralExpression_1grznot" typeRef="string" />
+        <inputValues id="UnaryTests_1gos1uu">
+          <text>"Active","Active - Without Enrollment","Inactive - Suspended","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL","Graduated","Exited on Good Standing","Exited - Permanent Disqualification"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0enbpdy" label="Event">
+        <inputExpression id="LiteralExpression_1rg0i0w" typeRef="Any">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_02dlrak" label="Additional Condition">
+        <inputExpression id="LiteralExpression_1mgoemw" typeRef="Any">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1o3durl" label="Next Status" typeRef="string">
+        <outputValues id="UnaryTests_10drbny">
+          <text>"Active","Active - Without Enrollment","Inactive - Suspended","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL","Graduated","Exited on Good Standing","Exited - Permanent Disqualification"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_1dpy72q">
+        <inputEntry id="UnaryTests_11k104n">
+          <text>"Active","Active - Without Enrollment","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19bkqfz">
+          <text>University exit</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03gu25j">
+          <text>Good standing</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rhxh6y">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="evaluateDisciplinaryVerdict" name="Evaluate Disciplinary Verdict">
+    <decisionTable id="DecisionTable_0o3lmt5">
+      <input id="InputClause_1qimcqx" label="Current State">
+        <inputExpression id="LiteralExpression_1a8h3qf" typeRef="string" />
+        <inputValues id="UnaryTests_04x68ir">
+          <text>"Active","Active - Without Enrollment","Inactive - Suspended","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL","Graduated","Exited on Good Standing","Exited - Permanent Disqualification"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1l2qc64" label="Event">
+        <inputExpression id="LiteralExpression_0wczydd" typeRef="Any">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1mzpkxi" label="Additional Condition">
+        <inputExpression id="LiteralExpression_07aahhb" typeRef="Any">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0r124m6" label="Next State" typeRef="string">
+        <outputValues id="UnaryTests_10qdf7n">
+          <text>"Active","Active - Without Enrollment","Inactive - Suspended","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL","Graduated","Exited on Good Standing","Exited - Permanent Disqualification"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_0h28xdi">
+        <inputEntry id="UnaryTests_1rg8lij">
+          <text>"Active","Active - Without Enrollment","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_063e9h2">
+          <text>Disciplinary verdict given</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16jvc2o">
+          <text>Non-readmission/dismissal/expulsion</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1oca280">
+          <text>"Exited - Permanent Disqualification"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0exml96">
+        <inputEntry id="UnaryTests_1vbpz8d">
+          <text>"Active","Active - Without Enrollment","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kilqdl">
+          <text>Disciplinary verdict given</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h0yega">
+          <text>Non-readmission/dismissal/expulsion</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18zviy5">
+          <text>"Inactive - Suspended"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="Decision_1f8y2e1_di" dmnElementRef="determineAcademicStatus">
+        <dc:Bounds height="80" width="180" x="160" y="210" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0gszn56" dmnElementRef="determineEnrollment">
+        <dc:Bounds height="80" width="180" x="160" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_15519h9" dmnElementRef="evaluateExit">
+        <dc:Bounds height="80" width="180" x="160" y="330" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_18yq59q" dmnElementRef="evaluateDisciplinaryVerdict">
+        <dc:Bounds height="80" width="180" x="160" y="450" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
