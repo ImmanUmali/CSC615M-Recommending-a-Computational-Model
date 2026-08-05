@@ -161,7 +161,7 @@
           <text>"any"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0t45udh">
-          <text>"REJECTED"</text>
+          <text>"A5.5: Not Qualified"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1gevouk">
@@ -179,7 +179,7 @@
           <text>"any"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_14iha5g">
-          <text>"REJECTED"</text>
+          <text>"A5.5: Not Qualified"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1k5k56v">
@@ -197,7 +197,7 @@
           <text>null</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_10ruvf3">
-          <text>"NEED FURTHER EVALUATION"</text>
+          <text>"A4.3: Need Further Evaluation"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0wj7oy3">
@@ -215,7 +215,7 @@
           <text>"yes"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uolm43">
-          <text>"PROVIDE OFFER LETTER"</text>
+          <text>"A5012: Offered/Probationary/Redirected"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0ri6gmb">
@@ -233,7 +233,7 @@
           <text>"yes"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0p3okq0">
-          <text>"PROVIDE OFFER LETTER"</text>
+          <text>"A5012: Offered/Probationary/Redirected"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_07301xk">
@@ -251,7 +251,7 @@
           <text>"no"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ty7x1m">
-          <text>"WAITLISTED"</text>
+          <text>"A5.3: Waitlisted"</text>
         </outputEntry>
       </rule>
     </decisionTable>
@@ -261,13 +261,13 @@
       <input id="InputClause_0ekw5fl" label="isAppealAccepted" biodi:width="191">
         <inputExpression id="LiteralExpression_048yhrk" typeRef="boolean" />
       </input>
-      <output id="OutputClause_0507a48" label="notice_type" typeRef="string" />
+      <output id="OutputClause_0507a48" label="next_state" typeRef="string" />
       <rule id="DecisionRule_0acp6ca">
         <inputEntry id="UnaryTests_0n0xyuw">
           <text>true</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0j86spd">
-          <text>"notice of acceptance"</text>
+          <text>"A5.4: Reconsidered"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0df3gaz">
@@ -275,7 +275,7 @@
           <text>false</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0wtp731">
-          <text>"notice of rejection"</text>
+          <text>"A5.5: Not Qualified"</text>
         </outputEntry>
       </rule>
     </decisionTable>
@@ -290,7 +290,7 @@
           <text></text>
         </inputExpression>
       </input>
-      <output id="OutputClause_12xe25a" label="notice_type" typeRef="string" />
+      <output id="OutputClause_12xe25a" label="next_state" typeRef="string" />
       <rule id="DecisionRule_08oehmu">
         <inputEntry id="UnaryTests_13jl39f">
           <text>true</text>
@@ -299,7 +299,7 @@
           <text>true</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1hyd8gf">
-          <text>"notice of offical admission"</text>
+          <text>"A7.0: Officially Admitted"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_07ri1nb">
@@ -310,7 +310,7 @@
           <text>false</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0il693c">
-          <text>"notice of provisional admission"</text>
+          <text>"A7.1: Provisionally Admitted "</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0tq3hje">
@@ -321,7 +321,7 @@
           <text>null</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0liqisy">
-          <text>"notice of deferral"</text>
+          <text>"A7.2: Deferred" </text>
         </outputEntry>
       </rule>
     </decisionTable>
