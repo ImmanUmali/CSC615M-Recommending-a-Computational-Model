@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="application_student_status" name="Application Student Status DMN" namespace="http://camunda.org/schema/1.0/dmn" exporter="dmn-js (https://demo.bpmn.io/dmn)" exporterVersion="17.10.1">
-  <decision id="evaluate_application_rules" name="Evaluate Application">
+  <decision id="evaluate_application_rules" name="Evaluate Application Requirements">
     <decisionTable id="decisionTable_1o0uw3y">
       <input id="input1" label="Were mandatory requirements completed?">
         <inputExpression id="inputExpression1" typeRef="string">
@@ -147,23 +147,43 @@
       </input>
       <output id="OutputClause_1pdgnzj" label="application_status" typeRef="string" />
       <rule id="DecisionRule_1womqb8">
+        <description>Applicant took further evaluation and failed</description>
         <inputEntry id="UnaryTests_1tegkes">
           <text>true</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1iyzscw">
-          <text>"no"</text>
+          <text>"yes"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ptpmym">
-          <text>"any"</text>
+          <text>"no"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1780ja2">
           <text>"any"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0t45udh">
-          <text>"rejection"</text>
+          <text>"REJECTED"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gevouk">
+        <description>Applicant failed admission test</description>
+        <inputEntry id="UnaryTests_04on4pj">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_118g1a5">
+          <text>"any"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00g3vzh">
+          <text>"any"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1alh5mf">
+          <text>"any"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14iha5g">
+          <text>"REJECTED"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1k5k56v">
+        <description>Applicant needs further evaluation and hasn't taken it</description>
         <inputEntry id="UnaryTests_0okc6sh">
           <text>true</text>
         </inputEntry>
@@ -174,64 +194,50 @@
           <text>null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1e4rtck">
-          <text>"any"</text>
+          <text>null</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_10ruvf3">
-          <text>"need further evaluation"</text>
+          <text>"NEED FURTHER EVALUATION"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0wj7oy3">
+        <description>Applicant passed admission test.</description>
         <inputEntry id="UnaryTests_1c7boe9">
           <text>true</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0eud6nq">
-          <text>"yes"</text>
+          <text>"no"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0mgg9tt">
-          <text>"yes"</text>
+          <text>null</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1i46xp5">
           <text>"yes"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0uolm43">
-          <text>"provide letter"</text>
+          <text>"PROVIDE OFFER LETTER"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0xr0h4l">
-        <inputEntry id="UnaryTests_0dz4tqx">
+      <rule id="DecisionRule_0ri6gmb">
+        <description>Applicant took further evaluation and passed.</description>
+        <inputEntry id="UnaryTests_0rei7v3">
           <text>true</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0hxcg1x">
-          <text>"no"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_16hncb6">
-          <text>"any"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1irot8t">
+        <inputEntry id="UnaryTests_11cl0u4">
           <text>"yes"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0ulfeqa">
-          <text>"provide letter"</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1gevouk">
-        <inputEntry id="UnaryTests_04on4pj">
-          <text>true</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_118g1a5">
-          <text>"any"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_00g3vzh">
-          <text>"any"</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1alh5mf">
+        <inputEntry id="UnaryTests_04tmxf8">
           <text>"yes"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_14iha5g">
-          <text>"rejection"</text>
+        <inputEntry id="UnaryTests_00yopuj">
+          <text>"yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p3okq0">
+          <text>"PROVIDE OFFER LETTER"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_07301xk">
+        <description>Applicant is waitlisted</description>
         <inputEntry id="UnaryTests_1jod03d">
           <text>true</text>
         </inputEntry>
@@ -245,7 +251,7 @@
           <text>"no"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ty7x1m">
-          <text>"waitlist"</text>
+          <text>"WAITLISTED"</text>
         </outputEntry>
       </rule>
     </decisionTable>
