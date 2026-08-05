@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="application_student_status" name="Application Student Status DMN" namespace="http://camunda.org/schema/1.0/dmn" exporter="dmn-js (https://demo.bpmn.io/dmn)" exporterVersion="17.10.1">
+  <decision id="evaluate_application_rules" name="Evaluate Application">
+    <decisionTable id="decisionTable_1o0uw3y">
+      <input id="input1" label="Were mandatory requirements completed?">
+        <inputExpression id="inputExpression1" typeRef="string">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_04tco3i">
+          <text></text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0btzayu" label="Did OAS/OASIS require resubmission?" biodi:width="192">
+        <inputExpression id="LiteralExpression_0ucmp94" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1fyigx2" label="Are there any pending requirements for admission?">
+        <inputExpression id="LiteralExpression_0ngxtnp" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="Next Status" name="" typeRef="string" />
+      <rule id="DecisionRule_1w0piu0">
+        <inputEntry id="UnaryTests_0pp73p2">
+          <text>"Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03l6ra1">
+          <text>"No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lmgk1h">
+          <text>"No"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0y3ddbv">
+          <text>"A2.0 Submitted - with Complete Requirements"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hx22pu">
+        <inputEntry id="UnaryTests_1hrlsc7">
+          <text>No</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rtg8p2">
+          <text>Yes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ozwxei">
+          <text>Yes</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cpzdnx">
+          <text>"A2.1 Submitted with Deficiencies"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00k6bmt">
+        <inputEntry id="UnaryTests_11m4zt1">
+          <text>No</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nesj57">
+          <text>No</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jw9ayz">
+          <text>Yes</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14erlt6">
+          <text>"A2.1 Submitted with Deficiencies"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0toxwnr">
+        <inputEntry id="UnaryTests_0apd4v9">
+          <text>No</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02n4rmu">
+          <text>Yes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1phslw2">
+          <text>Yes</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14rigyf">
+          <text>"A2.1 Submitted with Deficiencies"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="evaluation_application_condition" name="Evaluation Application Condition">
+    <decisionTable id="DecisionTable_0odduwa">
+      <input id="InputClause_1yqn3a7" label="isExamRequired">
+        <inputExpression id="LiteralExpression_0yomnlh" typeRef="boolean" />
+      </input>
+      <input id="InputClause_0f4fx98" label="isQualified">
+        <inputExpression id="LiteralExpression_0tlefx3" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0d3f6mc" label="next_state" typeRef="string" />
+      <rule id="DecisionRule_1iiyt41">
+        <inputEntry id="UnaryTests_17s1dkz">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1izbc9l">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0n9o13i">
+          <text>"A3.0"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1v0a4ip">
+        <inputEntry id="UnaryTests_0jm7nu4">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l8rcpf">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s1nnu6">
+          <text>"A3.1"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19c8u7f">
+        <inputEntry id="UnaryTests_18nvxak">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0013q0q">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19s13xd">
+          <text>"A3.2"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="evaluate_admission_status" name="Evaluate Admission Status">
+    <decisionTable id="DecisionTable_1stlif2">
+      <input id="InputClause_1lctqly" label="isScoreWithinCutoff" biodi:width="191">
+        <inputExpression id="LiteralExpression_030ieju" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_13n3smy" label="isFurtherEvalRequired">
+        <inputExpression id="LiteralExpression_1dssp7j" typeRef="string" />
+      </input>
+      <input id="InputClause_0wb5by6" label="isFurtherEvalPassed" biodi:width="191">
+        <inputExpression id="LiteralExpression_001yns9" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0y5tgdo" label="isSlotAvailable">
+        <inputExpression id="LiteralExpression_1lmshkc" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1pdgnzj" label="application_status" typeRef="string" />
+      <rule id="DecisionRule_1womqb8">
+        <inputEntry id="UnaryTests_1tegkes">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iyzscw">
+          <text>"no"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ptpmym">
+          <text>"any"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1780ja2">
+          <text>"any"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0t45udh">
+          <text>"rejection"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1k5k56v">
+        <inputEntry id="UnaryTests_0okc6sh">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c6g1sl">
+          <text>"yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0x0196y">
+          <text>null</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e4rtck">
+          <text>"any"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10ruvf3">
+          <text>"need further evaluation"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wj7oy3">
+        <inputEntry id="UnaryTests_1c7boe9">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eud6nq">
+          <text>"yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mgg9tt">
+          <text>"yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1i46xp5">
+          <text>"yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uolm43">
+          <text>"provide letter"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xr0h4l">
+        <inputEntry id="UnaryTests_0dz4tqx">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hxcg1x">
+          <text>"no"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16hncb6">
+          <text>"any"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1irot8t">
+          <text>"yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ulfeqa">
+          <text>"provide letter"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gevouk">
+        <inputEntry id="UnaryTests_04on4pj">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_118g1a5">
+          <text>"any"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00g3vzh">
+          <text>"any"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1alh5mf">
+          <text>"yes"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14iha5g">
+          <text>"rejection"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07301xk">
+        <inputEntry id="UnaryTests_1jod03d">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14zv0kq">
+          <text>"no"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bljz2e">
+          <text>null</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_182qnqw">
+          <text>"no"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ty7x1m">
+          <text>"waitlist"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="evaluate_appeal_application" name="Evaluate appeal application">
+    <decisionTable id="DecisionTable_1xt9z8j">
+      <input id="InputClause_0ekw5fl" label="isAppealAccepted" biodi:width="191">
+        <inputExpression id="LiteralExpression_048yhrk" typeRef="boolean" />
+      </input>
+      <output id="OutputClause_0507a48" label="notice_type" typeRef="string" />
+      <rule id="DecisionRule_0acp6ca">
+        <inputEntry id="UnaryTests_0n0xyuw">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0j86spd">
+          <text>"notice of acceptance"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0df3gaz">
+        <inputEntry id="UnaryTests_0kzkv03">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wtp731">
+          <text>"notice of rejection"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="evaluate_enrollment_application_status" name="Evaluate Enrollment Application Status">
+    <decisionTable id="DecisionTable_0vc91ou">
+      <input id="InputClause_0uhiqkw" label="isEnrollmentPassed">
+        <inputExpression id="LiteralExpression_1bpgdyi" typeRef="boolean" />
+      </input>
+      <input id="InputClause_0s81mga" label="isRequirementsComplete">
+        <inputExpression id="LiteralExpression_0ksxz6t" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_12xe25a" label="notice_type" typeRef="string" />
+      <rule id="DecisionRule_08oehmu">
+        <inputEntry id="UnaryTests_13jl39f">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iv9m5s">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hyd8gf">
+          <text>"notice of offical admission"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07ri1nb">
+        <inputEntry id="UnaryTests_0ftastv">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jkczdp">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0il693c">
+          <text>"notice of provisional admission"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tq3hje">
+        <inputEntry id="UnaryTests_1vcnl24">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c9fqhb">
+          <text>null</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0liqisy">
+          <text>"notice of deferral"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_04xschs">
+      <dmndi:DMNShape id="DMNShape_154a61s" dmnElementRef="evaluate_application_rules">
+        <dc:Bounds height="80" width="180" x="150" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1gojsm6" dmnElementRef="evaluation_application_condition">
+        <dc:Bounds height="80" width="180" x="150" y="170" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_19tokmw" dmnElementRef="evaluate_admission_status">
+        <dc:Bounds height="80" width="180" x="150" y="260" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_05x86et" dmnElementRef="evaluate_appeal_application">
+        <dc:Bounds height="80" width="180" x="150" y="350" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0cb1wys" dmnElementRef="evaluate_enrollment_application_status">
+        <dc:Bounds height="80" width="180" x="150" y="440" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
