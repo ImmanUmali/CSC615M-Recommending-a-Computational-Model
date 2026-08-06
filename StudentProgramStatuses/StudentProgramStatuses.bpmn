@@ -8,7 +8,7 @@
       <bpmn:lane id="Lane_1d5jtkb" name="Student">
         <bpmn:flowNodeRef>Activity_0wmrcoy</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_170kalw" name="DMN">
+      <bpmn:lane id="Lane_170kalw" name="University/Registrar Evaluation Unit">
         <bpmn:flowNodeRef>Gateway_04e5c0n</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1x2ngt9</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0vgax4c</bpmn:flowNodeRef>
