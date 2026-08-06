@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0gs5vmw" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.49.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+  <decision id="Decision_1tganvb" name="Determine Admission Status">
+    <decisionTable id="DecisionTable_0apemq1">
+      <input id="Input_1" label=" Current Status">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_04goyxj" label="Event">
+        <inputExpression id="LiteralExpression_1pag8pg" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label=" Next Status" typeRef="string" />
+      <rule id="DecisionRule_083obly">
+        <inputEntry id="UnaryTests_0ww90vy">
+          <text>"New Student – No Status Yet"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1x0abec">
+          <text>Probationary admission status offered</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0c6uegc">
+          <text>"Probationary"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fab55w">
+        <inputEntry id="UnaryTests_17txld8">
+          <text>"New Student – No Status Yet"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13unbti">
+          <text>SNAS criteria not reached</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1v6emua">
+          <text>"Eligible"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0ypo5mg" name="Determine Academic Status">
+    <decisionTable id="DecisionTable_148cds4">
+      <input id="InputClause_0eicjso" label=" Current Status">
+        <inputExpression id="LiteralExpression_0ja5qhn" typeRef="string" />
+      </input>
+      <input id="InputClause_05mdxqy" label=" Event">
+        <inputExpression id="LiteralExpression_0rgaytu" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1k33113" label=" Next Status" typeRef="string" />
+      <rule id="DecisionRule_1i2kzt0">
+        <inputEntry id="UnaryTests_0jvkoj7">
+          <text>"Probationary"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17x4vif">
+          <text>SNAS criteria not reached</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bvrdyj">
+          <text>"Eligible"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_071s28z">
+        <inputEntry id="UnaryTests_1ao7asm">
+          <text>"Probationary"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xvfon7">
+          <text>Academic standards not complied</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1b2ne5l">
+          <text>"Strict Probationary"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17ki588">
+        <inputEntry id="UnaryTests_109vp5u">
+          <text>"Probationary"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14mh1yo">
+          <text>Program/strand retention rules breached</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1e9fvrw">
+          <text>"Ineligible"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0iabtac">
+        <inputEntry id="UnaryTests_10gkw79">
+          <text>"Eligible"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10rd07y">
+          <text>SNAS criteria reached</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yjzjex">
+          <text>"SNAS"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1i05sd0">
+        <inputEntry id="UnaryTests_06lns5z">
+          <text>"Eligible"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12eik8z">
+          <text>Program/strand retention rules breached</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0184p5y">
+          <text>"Ineligible"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0oflzey">
+        <inputEntry id="UnaryTests_11x5s2k">
+          <text>"SNAS"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xfs1nk">
+          <text>SNAS criteria not reached</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bb7iul">
+          <text>"Eligible"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xyxlil">
+        <inputEntry id="UnaryTests_03714gm">
+          <text>"SNAS"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n37jf6">
+          <text>Program/strand retention rules breached</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ek0vw2">
+          <text>"Ineligible"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0e7wj13">
+        <inputEntry id="UnaryTests_0gt0qse">
+          <text>"Strict Probationary"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pw7geh">
+          <text>Program/strand retention rules breached</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mtru3b">
+          <text>"Ineligible"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0kxe1z9" name="Determine Graduation Candidacy">
+    <decisionTable id="DecisionTable_0ldv6yt">
+      <input id="InputClause_1lvoofq">
+        <inputExpression id="LiteralExpression_04mz53e" typeRef="string" />
+      </input>
+      <input id="InputClause_0rs7kjt">
+        <inputExpression id="LiteralExpression_01rwrha" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0qjwav1" typeRef="string" />
+      <rule id="DecisionRule_1y375rr">
+        <inputEntry id="UnaryTests_1iv730n">
+          <text>"Eligible"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r507sc">
+          <text>Graduation eligibility rules complied (first check)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10tetkr">
+          <text>"Candidate for Graduation"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0o8qxwg">
+        <inputEntry id="UnaryTests_0h43x6b">
+          <text>"Candidate for Graduation"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fwge79">
+          <text>Graduation eligibility rules complied (final check)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1axv6h5">
+          <text>"Graduated"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1dfsqly" name="Evaluate Exit">
+    <decisionTable id="DecisionTable_00jc9m8">
+      <input id="InputClause_1xr286n" label=" Current Status">
+        <inputExpression id="LiteralExpression_0pqna76" typeRef="string" />
+      </input>
+      <input id="InputClause_064dr40" label=" Event">
+        <inputExpression id="LiteralExpression_1i1wfwo" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1aue42l" label=" Next Status" typeRef="string" />
+      <rule id="DecisionRule_09uh9wf">
+        <inputEntry id="UnaryTests_0uhz6vo">
+          <text>"Probationary", "Eligible", "SNAS", "Strict Probationary", "Candidate for Graduation"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ktvncb">
+          <text>University exit submitted</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zeh3p2">
+          <text>"Incomplete"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_064kaig" name="Determine Enrollment Status">
+    <decisionTable id="DecisionTable_17f39dz">
+      <input id="InputClause_1xhpg4d" label=" Current Status">
+        <inputExpression id="LiteralExpression_091scru" typeRef="string" />
+      </input>
+      <input id="InputClause_0ro70gc" label=" Event">
+        <inputExpression id="LiteralExpression_0dc6sny" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_04zfmn9" label=" Next Status" typeRef="string" />
+      <rule id="DecisionRule_0dgtwkz">
+        <inputEntry id="UnaryTests_1y78j04">
+          <text>"Active – Without Enrollment"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0iwnwi1">
+          <text>Enrollment/enlistment confirmed</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1urrtrg">
+          <text>"Active"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fwqflg">
+        <inputEntry id="UnaryTests_0nny1nf">
+          <text>"Active – Without Enrollment"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09xbzhl">
+          <text>Suspension grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qyurun">
+          <text>"Inactive – Suspended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10sebsy">
+        <inputEntry id="UnaryTests_14rg0sy">
+          <text>"Active – Without Enrollment"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15lqdcw">
+          <text>Exit in good standing approved</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ng0b5s">
+          <text>"Exited on Good Standing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_124uk2v">
+        <inputEntry id="UnaryTests_002xtwd">
+          <text>"Active – Without Enrollment"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ts7l2v">
+          <text>Permanent disqualification grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0md5qtb">
+          <text>"Exited – Permanent Disqualification"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0l1qn9u">
+        <inputEntry id="UnaryTests_0vfodri">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1da46aa">
+          <text>Residency registration submitted</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yea93f">
+          <text>"Active – Residency"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ftknw7">
+        <inputEntry id="UnaryTests_10mod0n">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fik2xz">
+          <text>LOA within max period approved</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17b1qcj">
+          <text>"Active – Under LOA"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0a6944z">
+        <inputEntry id="UnaryTests_0djyjue">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1a0ttk9">
+          <text>Prolonged leave conditions met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13lxu4m">
+          <text>"Inactive – Prolonged Leave"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b6qa50">
+        <inputEntry id="UnaryTests_1oa22ro">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11ctuop">
+          <text>AWOL conditions met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_110v52l">
+          <text>"Inactive – AWOL"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15helju">
+        <inputEntry id="UnaryTests_02cziww">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h2df2p">
+          <text>Suspension grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ez1rmi">
+          <text>"Inactive – Suspended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0q0gfb5">
+        <inputEntry id="UnaryTests_1oy991q">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1am27pc">
+          <text>All programs graduated</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cu1q8o">
+          <text>"Graduated"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1myc997">
+        <inputEntry id="UnaryTests_094pgao">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uk8edk">
+          <text>Exit in good standing approved</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0isri2q">
+          <text>"Exited on Good Standing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vuv1w6">
+        <inputEntry id="UnaryTests_1ui1n93">
+          <text>"Active"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_188utbf">
+          <text>Permanent disqualification grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mo85iy">
+          <text>"Exited – Permanent Disqualification"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01g2fh5">
+        <inputEntry id="UnaryTests_0817av6">
+          <text>"Active – Residency"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1x85hul">
+          <text>Enrollment/enlistment confirmed</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wwsxl1">
+          <text>"Active"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ousn9j">
+        <inputEntry id="UnaryTests_1ub9xo6">
+          <text>"Active – Residency"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17f7hsv">
+          <text>AWOL conditions met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lnklvb">
+          <text>"Inactive – AWOL"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s049f7">
+        <inputEntry id="UnaryTests_044dw3z">
+          <text>"Active – Residency"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k0rmcq">
+          <text>Suspension grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0n7osua">
+          <text>"Inactive – Suspended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08y5d9t">
+        <inputEntry id="UnaryTests_10pksqc">
+          <text>"Active – Residency"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04fceu0">
+          <text>Exit in good standing approved</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hcnqqv">
+          <text>"Exited on Good Standing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1re3jd1">
+        <inputEntry id="UnaryTests_00nsats">
+          <text>"Active – Residency"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qhoep6">
+          <text>Permanent disqualification grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18gqqyf">
+          <text>"Exited – Permanent Disqualification"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02ghieh">
+        <inputEntry id="UnaryTests_0d72p68">
+          <text>"Active – Under LOA"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hv58zm">
+          <text>Suspension grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12v256k">
+          <text>"Inactive – Suspended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0t43b1r">
+        <inputEntry id="UnaryTests_1klt3g0">
+          <text>"Active – Under LOA"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dd6ofa">
+          <text>Exit in good standing approved</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lv5m6a">
+          <text>"Exited on Good Standing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0axn040">
+        <inputEntry id="UnaryTests_1685l7s">
+          <text>"Active – Under LOA"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1u32kbv">
+          <text>Permanent disqualification grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_068wqn2">
+          <text>"Exited – Permanent Disqualification"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0nzgg2l">
+        <inputEntry id="UnaryTests_04341wr">
+          <text>"Active – Under LOA"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0aul29d">
+          <text>Returnee application approved</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17i0b3y">
+          <text>"Active – Without Enrollment"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1l7uvvy">
+        <inputEntry id="UnaryTests_033n1o1">
+          <text>"Inactive – Prolonged Leave"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0elzcgp">
+          <text>Suspension grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06yq0mh">
+          <text>"Inactive – Suspended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0j2gawa">
+        <inputEntry id="UnaryTests_1glsaf6">
+          <text>"Inactive – Prolonged Leave"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0guj5je">
+          <text>Exit in good standing approved</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1t6dkfj">
+          <text>"Exited on Good Standing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0d2tifx">
+        <inputEntry id="UnaryTests_1l161bg">
+          <text>"Inactive – Prolonged Leave"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nmi3dk">
+          <text>Permanent disqualification grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bs98nf">
+          <text>"Exited – Permanent Disqualification"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b313jd">
+        <inputEntry id="UnaryTests_0p6q5su">
+          <text>"Inactive – Prolonged Leave"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ko79ma">
+          <text>Returnee application approved</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1r61bte">
+          <text>"Active – Without Enrollment"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bfi0ek">
+        <inputEntry id="UnaryTests_0blcfdh">
+          <text>"Inactive – AWOL"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ds97mo">
+          <text>Suspension grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13h63yo">
+          <text>"Inactive – Suspended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04np8j7">
+        <inputEntry id="UnaryTests_02wamm8">
+          <text>"Inactive – AWOL"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0x8vz49">
+          <text>Exit in good standing approved</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1eihul5">
+          <text>"Exited on Good Standing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0skdydp">
+        <inputEntry id="UnaryTests_0gi37l1">
+          <text>"Inactive – AWOL"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vajuk0">
+          <text>Permanent disqualification grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0owtxau">
+          <text>"Exited – Permanent Disqualification"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0e2u7vx">
+        <inputEntry id="UnaryTests_0i1w0un">
+          <text>"Inactive – AWOL"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wlkk2q">
+          <text>Returnee application approved</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13mi2s5">
+          <text>"Active – Without Enrollment"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fsqa9a">
+        <inputEntry id="UnaryTests_0bqdqsh">
+          <text>"Inactive – Suspended"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0muv244">
+          <text>Enrollment/enlistment confirmed</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1981owe">
+          <text>"Active"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04a1n9n">
+        <inputEntry id="UnaryTests_06njlzb">
+          <text>"Inactive – Suspended"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03xx1to">
+          <text>Exit in good standing approved</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06xbpf7">
+          <text>"Exited on Good Standing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00z8ild">
+        <inputEntry id="UnaryTests_1idn4w8">
+          <text>"Inactive – Suspended"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11st3xg">
+          <text>Permanent disqualification grounds met</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0krcebx">
+          <text>"Exited – Permanent Disqualification"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="Decision_1tganvb_di" dmnElementRef="Decision_1tganvb">
+        <dc:Bounds height="80" width="180" x="150" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_07fmds1" dmnElementRef="Decision_0ypo5mg">
+        <dc:Bounds height="80" width="180" x="150" y="180" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1i5x277" dmnElementRef="Decision_0kxe1z9">
+        <dc:Bounds height="80" width="180" x="150" y="290" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1ypi4xu" dmnElementRef="Decision_1dfsqly">
+        <dc:Bounds height="80" width="180" x="150" y="400" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1jvd2m0" dmnElementRef="Decision_064kaig">
+        <dc:Bounds height="80" width="180" x="150" y="530" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
