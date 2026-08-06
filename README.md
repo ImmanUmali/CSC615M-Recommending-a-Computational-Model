@@ -4,6 +4,9 @@
 - Kaw, Kellie
 - Umali, Immanuel
 
+## Diagrams
+The diagrams may be viewed through importing them into any BPMN/DMN editor or viewer tool. 
+
 ## Assessment of the Expressive Power of BPMN and DMN
 Business Process Model and Notation (BPMN) and Decision Model and Notation (DMN) complement each other by modeling different aspects of the Student Journey Matrix. BPMN represents the sequence of activities and the overall workflow of a student during their stay in DLSU, providing a visual representation of tasks, events, gateways, and end states. This makes the student lifecycle easy to understand and follow. DMN focuses on the business rules that determine how a student's status changes. Instead of using decision branches within the BPMN model, the decision logic is captured in the decision tables as it is represented as a Business Rule Task. These tables evaluate different inputs and conditions to determine the output. Separating the decision logic from the process improves readability and makes the business rules easier to maintain. Using BPMN and DMN together produces a clearer representation than using one or the other alone. It becomes more organized and easier to update when policies change without requiring major modifications to the process model.
 
