@@ -27,20 +27,20 @@ Output: Next Status</text>
 
 Output: Next Status</text>
     </textAnnotation>
-    <association id="Association_1hxu7hg" associationDirection="None" sourceRef="Activity_0vutv7i" targetRef="TextAnnotation_1kd1zdz" />
     <association id="Association_0m6l7jr" associationDirection="None" sourceRef="Activity_1tamhw2" targetRef="TextAnnotation_19tflg7" />
     <association id="Association_1iqrhtz" associationDirection="None" sourceRef="Activity_0g2th82" targetRef="TextAnnotation_0dasuj3" />
     <association id="Association_1ggjxse" associationDirection="None" sourceRef="Activity_1umt30t" targetRef="TextAnnotation_1nksohv" />
     <association id="Association_02erx7j" associationDirection="None" sourceRef="Activity_0kwxbaq" targetRef="TextAnnotation_14eljcp" />
+    <association id="Association_1hxu7hg" associationDirection="None" sourceRef="Activity_0vutv7i" targetRef="TextAnnotation_1kd1zdz" />
   </collaboration>
   <process id="Process_1" isExecutable="false">
     <laneSet id="LaneSet_0hov71s">
       <lane id="Lane_0yz8mo5" name="Student">
-        <flowNodeRef>Activity_1l8vvsb</flowNodeRef>
         <flowNodeRef>Activity_19b4vuv</flowNodeRef>
         <flowNodeRef>Activity_0gkrey4</flowNodeRef>
         <flowNodeRef>Activity_06fcahc</flowNodeRef>
         <flowNodeRef>Activity_08mefw3</flowNodeRef>
+        <flowNodeRef>Activity_1l8vvsb</flowNodeRef>
       </lane>
       <lane id="Lane_0424ng2" name="University/Registrar Evaluation Unit">
         <flowNodeRef>Activity_1tamhw2</flowNodeRef>
@@ -48,12 +48,11 @@ Output: Next Status</text>
         <flowNodeRef>Activity_0g2th82</flowNodeRef>
         <flowNodeRef>Gateway_1bszcnp</flowNodeRef>
         <flowNodeRef>Activity_1umt30t</flowNodeRef>
-        <flowNodeRef>Activity_0vutv7i</flowNodeRef>
         <flowNodeRef>Activity_0kwxbaq</flowNodeRef>
+        <flowNodeRef>Activity_0vutv7i</flowNodeRef>
       </lane>
       <lane id="Lane_0dtcfmn" name="University/Registrar">
         <flowNodeRef>Activity_12nugk7</flowNodeRef>
-        <flowNodeRef>Event_16l5qeq</flowNodeRef>
         <flowNodeRef>Activity_0329nyk</flowNodeRef>
         <flowNodeRef>Activity_09n7uyk</flowNodeRef>
         <flowNodeRef>Event_0cqapsh</flowNodeRef>
@@ -68,19 +67,13 @@ Output: Next Status</text>
         <flowNodeRef>Task_1hcentk</flowNodeRef>
         <flowNodeRef>Gateway_0ls3m8t</flowNodeRef>
         <flowNodeRef>Activity_1x00ukt</flowNodeRef>
+        <flowNodeRef>Event_16l5qeq</flowNodeRef>
       </lane>
     </laneSet>
     <task id="Activity_12nugk7" name="Suspension lifted">
       <incoming>Flow_1jsz4zu</incoming>
       <outgoing>Flow_0skjzah</outgoing>
     </task>
-    <task id="Activity_1l8vvsb" name="University Exit Submitted">
-      <incoming>Flow_1nyp8lo</incoming>
-      <outgoing>Flow_1sj7pzy</outgoing>
-    </task>
-    <endEvent id="Event_16l5qeq" name="Mark as &#34;Exited on Good Standing&#34;">
-      <incoming>Flow_0ml0hu5</incoming>
-    </endEvent>
     <task id="Activity_0329nyk" name="Mark as &#34;Graduated&#34;">
       <incoming>Flow_1dhr8zy</incoming>
     </task>
@@ -106,18 +99,28 @@ Output: Next Status</text>
     </task>
     <businessRuleTask id="Activity_0g2th82" name="Evaluate Disciplinary Verdict" camunda:decisionRef="evaluateDisciplinaryVerdict">
       <incoming>Flow_01t5fwu</incoming>
+      <incoming>Flow_0i34kv7</incoming>
+      <incoming>Flow_0oa7ght</incoming>
+      <incoming>Flow_0yq1vgu</incoming>
+      <incoming>Flow_15n4tfn</incoming>
       <outgoing>Flow_0w42enp</outgoing>
     </businessRuleTask>
     <task id="Activity_0rih61s" name="Disciplinary verdict given">
+      <incoming>Flow_0oz0dwv</incoming>
+      <incoming>Flow_0z6i8gn</incoming>
       <outgoing>Flow_01t5fwu</outgoing>
     </task>
     <task id="Activity_1io3ega" name="Mark as &#34;Active - Residency&#34;">
       <incoming>Flow_1cpme7z</incoming>
       <outgoing>Flow_05e5nrk</outgoing>
+      <outgoing>Flow_03tclw7</outgoing>
+      <outgoing>Flow_0i34kv7</outgoing>
     </task>
     <task id="Activity_19ib31i" name="Mark as &#34;Active - Under LOA&#34;">
       <incoming>Flow_1bzxgac</incoming>
       <outgoing>Flow_0y0j72k</outgoing>
+      <outgoing>Flow_15g00bk</outgoing>
+      <outgoing>Flow_15n4tfn</outgoing>
     </task>
     <task id="Activity_0863bgx" name="Approved Returnee">
       <incoming>Flow_1mp9b4r</incoming>
@@ -128,10 +131,14 @@ Output: Next Status</text>
     <task id="Activity_0lgost7" name="Mark as &#34;Inactive - Prolonged Leave&#34;">
       <incoming>Flow_1m0hxnn</incoming>
       <outgoing>Flow_08q2vlp</outgoing>
+      <outgoing>Flow_0564fny</outgoing>
+      <outgoing>Flow_0yq1vgu</outgoing>
     </task>
     <task id="Activity_0ykwl3e" name="Mark as &#34;Inactive - AWOL&#34;">
       <incoming>Flow_10wyfdh</incoming>
       <outgoing>Flow_1mp9b4r</outgoing>
+      <outgoing>Flow_1qz81cy</outgoing>
+      <outgoing>Flow_0oa7ght</outgoing>
     </task>
     <exclusiveGateway id="Gateway_1bszcnp" name="Next Status?">
       <incoming>Flow_0wry75s</incoming>
@@ -158,11 +165,6 @@ Output: Next Status</text>
       <incoming>Flow_147c8np</incoming>
       <outgoing>Flow_0hg8bjq</outgoing>
     </task>
-    <businessRuleTask id="Activity_0vutv7i" name="Evaluate Exit" camunda:decisionRef="evaluateExit">
-      <extensionElements />
-      <incoming>Flow_1sj7pzy</incoming>
-      <outgoing>Flow_0ml0hu5</outgoing>
-    </businessRuleTask>
     <task id="Activity_08mefw3" name="Student enrolled">
       <incoming>Flow_0erom66</incoming>
       <incoming>Flow_05e5nrk</incoming>
@@ -188,17 +190,19 @@ Output: Next Status</text>
       <outgoing>Flow_0rz82p2</outgoing>
       <outgoing>Flow_1dggjjh</outgoing>
       <outgoing>Flow_05tcukl</outgoing>
+      <outgoing>Flow_0oz0dwv</outgoing>
     </exclusiveGateway>
     <task id="Activity_1x00ukt" name="Mark as &#34;Active without Enrollment&#34;">
       <incoming>SequenceFlow_0h21x7r</incoming>
       <incoming>Flow_13nv60m</incoming>
       <outgoing>Flow_0erom66</outgoing>
+      <outgoing>Flow_1att1nj</outgoing>
+      <outgoing>Flow_0z6i8gn</outgoing>
     </task>
     <sequenceFlow id="Flow_1jsz4zu" name="Suspension period is over" sourceRef="Activity_1c46jjx" targetRef="Activity_12nugk7" />
     <sequenceFlow id="Flow_0skjzah" sourceRef="Activity_12nugk7" targetRef="Activity_08mefw3" />
     <sequenceFlow id="Flow_1nyp8lo" sourceRef="Gateway_0ls3m8t" targetRef="Activity_1l8vvsb" />
     <sequenceFlow id="Flow_1sj7pzy" sourceRef="Activity_1l8vvsb" targetRef="Activity_0vutv7i" />
-    <sequenceFlow id="Flow_0ml0hu5" name="Student is in good standing" sourceRef="Activity_0vutv7i" targetRef="Event_16l5qeq" />
     <sequenceFlow id="Flow_1dhr8zy" name="All programs are graduated" sourceRef="Activity_1tamhw2" targetRef="Activity_0329nyk" />
     <sequenceFlow id="Flow_05tcukl" name="Graduation assessment" sourceRef="Gateway_0ls3m8t" targetRef="Activity_09n7uyk" />
     <sequenceFlow id="Flow_0d88ct4" sourceRef="Activity_09n7uyk" targetRef="Activity_1tamhw2" />
@@ -222,42 +226,61 @@ Output: Next Status</text>
     <sequenceFlow id="Flow_1iv4hwm" sourceRef="Activity_0gkrey4" targetRef="Activity_1umt30t" />
     <sequenceFlow id="Flow_0hg8bjq" sourceRef="Activity_06fcahc" targetRef="Activity_1umt30t" />
     <sequenceFlow id="Flow_147c8np" name="Student registers for residency" sourceRef="Gateway_0ls3m8t" targetRef="Activity_06fcahc" />
-    <sequenceFlow id="Flow_0erom66" sourceRef="Activity_1x00ukt" targetRef="Activity_08mefw3" />
+    <sequenceFlow id="Flow_0erom66" name="Student enrolls for next term" sourceRef="Activity_1x00ukt" targetRef="Activity_08mefw3" />
     <sequenceFlow id="Flow_17kihll" sourceRef="Activity_08mefw3" targetRef="Activity_0kwxbaq" />
     <sequenceFlow id="Flow_1f6arv1" sourceRef="Activity_0kwxbaq" targetRef="Task_1hcentk" />
     <sequenceFlow id="SequenceFlow_0h21x7r" sourceRef="StartEvent_1y45yut" targetRef="Activity_1x00ukt" />
     <sequenceFlow id="Flow_101uio7" sourceRef="Task_1hcentk" targetRef="Gateway_0ls3m8t" />
+    <sequenceFlow id="Flow_0oz0dwv" sourceRef="Gateway_0ls3m8t" targetRef="Activity_0rih61s" />
+    <sequenceFlow id="Flow_0ml0hu5" name="Student is in good standing" sourceRef="Activity_0vutv7i" targetRef="Event_16l5qeq" />
+    <sequenceFlow id="Flow_03tclw7" sourceRef="Activity_1io3ega" targetRef="Activity_1l8vvsb" />
+    <sequenceFlow id="Flow_1att1nj" name="Student exits the university" sourceRef="Activity_1x00ukt" targetRef="Activity_1l8vvsb" />
+    <sequenceFlow id="Flow_15g00bk" sourceRef="Activity_19ib31i" targetRef="Activity_1l8vvsb" />
+    <sequenceFlow id="Flow_0564fny" sourceRef="Activity_0lgost7" targetRef="Activity_1l8vvsb" />
+    <sequenceFlow id="Flow_1qz81cy" name="Student exits the university" sourceRef="Activity_0ykwl3e" targetRef="Activity_1l8vvsb" />
+    <task id="Activity_1l8vvsb" name="University Exit Submitted">
+      <incoming>Flow_1nyp8lo</incoming>
+      <incoming>Flow_03tclw7</incoming>
+      <incoming>Flow_1att1nj</incoming>
+      <incoming>Flow_15g00bk</incoming>
+      <incoming>Flow_0564fny</incoming>
+      <incoming>Flow_1qz81cy</incoming>
+      <outgoing>Flow_1sj7pzy</outgoing>
+    </task>
+    <endEvent id="Event_16l5qeq" name="Mark as &#34;Exited on Good Standing&#34;">
+      <incoming>Flow_0ml0hu5</incoming>
+    </endEvent>
+    <businessRuleTask id="Activity_0vutv7i" name="Evaluate Exit" camunda:decisionRef="evaluateExit">
+      <extensionElements />
+      <incoming>Flow_1sj7pzy</incoming>
+      <outgoing>Flow_0ml0hu5</outgoing>
+    </businessRuleTask>
+    <sequenceFlow id="Flow_0z6i8gn" name="Student receives disciplinary action" sourceRef="Activity_1x00ukt" targetRef="Activity_0rih61s" />
+    <sequenceFlow id="Flow_0i34kv7" name="Student receives disciplinary action" sourceRef="Activity_1io3ega" targetRef="Activity_0g2th82" />
+    <sequenceFlow id="Flow_0oa7ght" sourceRef="Activity_0ykwl3e" targetRef="Activity_0g2th82" />
+    <sequenceFlow id="Flow_0yq1vgu" sourceRef="Activity_0lgost7" targetRef="Activity_0g2th82" />
+    <sequenceFlow id="Flow_15n4tfn" sourceRef="Activity_19ib31i" targetRef="Activity_0g2th82" />
   </process>
   <bpmndi:BPMNDiagram id="BpmnDiagram_1">
     <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="Collaboration_0gzdqwm">
       <bpmndi:BPMNShape id="Participant_071c9u8_di" bpmnElement="Participant_071c9u8" isHorizontal="true">
         <omgdc:Bounds x="160" y="79" width="2950" height="1420" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_0yz8mo5_di" bpmnElement="Lane_0yz8mo5" isHorizontal="true">
-        <omgdc:Bounds x="190" y="79" width="2920" height="478" />
+      <bpmndi:BPMNShape id="Lane_0dtcfmn_di" bpmnElement="Lane_0dtcfmn" isHorizontal="true">
+        <omgdc:Bounds x="190" y="941" width="2920" height="558" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0424ng2_di" bpmnElement="Lane_0424ng2" isHorizontal="true">
         <omgdc:Bounds x="190" y="557" width="2920" height="384" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_0dtcfmn_di" bpmnElement="Lane_0dtcfmn" isHorizontal="true">
-        <omgdc:Bounds x="190" y="941" width="2920" height="558" />
+      <bpmndi:BPMNShape id="Lane_0yz8mo5_di" bpmnElement="Lane_0yz8mo5" isHorizontal="true">
+        <omgdc:Bounds x="190" y="79" width="2920" height="478" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_12nugk7_di" bpmnElement="Activity_12nugk7">
         <omgdc:Bounds x="1960" y="1201" width="100" height="80" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1l8vvsb_di" bpmnElement="Activity_1l8vvsb">
-        <omgdc:Bounds x="954" y="429" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_16l5qeq_di" bpmnElement="Event_16l5qeq">
-        <omgdc:Bounds x="986" y="991" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <omgdc:Bounds x="953" y="1035" width="94" height="27" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0329nyk_di" bpmnElement="Activity_0329nyk">
         <omgdc:Bounds x="1310" y="1091" width="100" height="80" />
@@ -336,10 +359,6 @@ Output: Next Status</text>
         <omgdc:Bounds x="2220" y="331" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_13b4jy0_di" bpmnElement="Activity_0vutv7i">
-        <omgdc:Bounds x="954" y="701" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_08mefw3_di" bpmnElement="Activity_08mefw3">
         <omgdc:Bounds x="604" y="311" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -360,11 +379,25 @@ Output: Next Status</text>
       <bpmndi:BPMNShape id="BPMNShape_0kukqca" bpmnElement="Gateway_0ls3m8t" isMarkerVisible="true">
         <omgdc:Bounds x="829" y="1106" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds x="808" y="1165" width="84" height="27" />
+          <omgdc:Bounds x="748" y="1165" width="84" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0f52oti" bpmnElement="Activity_1x00ukt">
         <omgdc:Bounds x="404" y="1091" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1l8vvsb_di" bpmnElement="Activity_1l8vvsb">
+        <omgdc:Bounds x="960" y="440" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_16l5qeq_di" bpmnElement="Event_16l5qeq">
+        <omgdc:Bounds x="992" y="971" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="960" y="1015" width="92" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_13b4jy0_di" bpmnElement="Activity_0vutv7i">
+        <omgdc:Bounds x="960" y="701" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1jsz4zu_di" bpmnElement="Flow_1jsz4zu">
@@ -386,19 +419,12 @@ Output: Next Status</text>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1nyp8lo_di" bpmnElement="Flow_1nyp8lo">
         <omgdi:waypoint x="854" y="1106" />
-        <omgdi:waypoint x="854" y="469" />
-        <omgdi:waypoint x="954" y="469" />
+        <omgdi:waypoint x="854" y="480" />
+        <omgdi:waypoint x="960" y="480" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1sj7pzy_di" bpmnElement="Flow_1sj7pzy">
-        <omgdi:waypoint x="1004" y="509" />
-        <omgdi:waypoint x="1004" y="701" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0ml0hu5_di" bpmnElement="Flow_0ml0hu5">
-        <omgdi:waypoint x="1004" y="781" />
-        <omgdi:waypoint x="1004" y="991" />
-        <bpmndi:BPMNLabel>
-          <omgdc:Bounds x="1015" y="815" width="89" height="27" />
-        </bpmndi:BPMNLabel>
+        <omgdi:waypoint x="1010" y="520" />
+        <omgdi:waypoint x="1010" y="701" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1dhr8zy_di" bpmnElement="Flow_1dhr8zy">
         <omgdi:waypoint x="1250" y="741" />
@@ -560,6 +586,9 @@ Output: Next Status</text>
         <omgdi:waypoint x="454" y="1091" />
         <omgdi:waypoint x="454" y="351" />
         <omgdi:waypoint x="604" y="351" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="473" y="316" width="74" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17kihll_di" bpmnElement="Flow_17kihll">
         <omgdi:waypoint x="654" y="391" />
@@ -577,30 +606,104 @@ Output: Next Status</text>
         <omgdi:waypoint x="704" y="1131" />
         <omgdi:waypoint x="829" y="1131" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0m6l7jr_di" bpmnElement="Association_0m6l7jr">
-        <omgdi:waypoint x="1228" y="701" />
-        <omgdi:waypoint x="1243" y="680" />
+      <bpmndi:BPMNEdge id="Flow_0oz0dwv_di" bpmnElement="Flow_0oz0dwv">
+        <omgdi:waypoint x="854" y="1156" />
+        <omgdi:waypoint x="854" y="1241" />
+        <omgdi:waypoint x="1570" y="1241" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1iqrhtz_di" bpmnElement="Association_1iqrhtz">
-        <omgdi:waypoint x="1647" y="701" />
-        <omgdi:waypoint x="1666" y="673" />
+      <bpmndi:BPMNEdge id="Flow_0ml0hu5_di" bpmnElement="Flow_0ml0hu5">
+        <omgdi:waypoint x="1010" y="781" />
+        <omgdi:waypoint x="1010" y="971" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="915" y="799" width="89" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1ggjxse_di" bpmnElement="Association_1ggjxse">
-        <omgdi:waypoint x="2497" y="701" />
-        <omgdi:waypoint x="2516" y="673" />
+      <bpmndi:BPMNEdge id="Flow_03tclw7_di" bpmnElement="Flow_03tclw7">
+        <omgdi:waypoint x="2390" y="1131" />
+        <omgdi:waypoint x="2350" y="1131" />
+        <omgdi:waypoint x="2350" y="480" />
+        <omgdi:waypoint x="1060" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1att1nj_di" bpmnElement="Flow_1att1nj">
+        <omgdi:waypoint x="454" y="1091" />
+        <omgdi:waypoint x="454" y="270" />
+        <omgdi:waypoint x="810" y="270" />
+        <omgdi:waypoint x="810" y="480" />
+        <omgdi:waypoint x="960" y="480" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="529" y="226" width="82" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15g00bk_di" bpmnElement="Flow_15g00bk">
+        <omgdi:waypoint x="2580" y="1171" />
+        <omgdi:waypoint x="2580" y="1240" />
+        <omgdi:waypoint x="3020" y="1240" />
+        <omgdi:waypoint x="3020" y="480" />
+        <omgdi:waypoint x="1060" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0564fny_di" bpmnElement="Flow_0564fny">
+        <omgdi:waypoint x="2720" y="1171" />
+        <omgdi:waypoint x="2720" y="1240" />
+        <omgdi:waypoint x="3020" y="1240" />
+        <omgdi:waypoint x="3020" y="480" />
+        <omgdi:waypoint x="1060" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qz81cy_di" bpmnElement="Flow_1qz81cy">
+        <omgdi:waypoint x="2860" y="1171" />
+        <omgdi:waypoint x="2860" y="1240" />
+        <omgdi:waypoint x="3020" y="1240" />
+        <omgdi:waypoint x="3020" y="480" />
+        <omgdi:waypoint x="1060" y="480" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1499" y="436" width="82" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0z6i8gn_di" bpmnElement="Flow_0z6i8gn">
+        <omgdi:waypoint x="504" y="1131" />
+        <omgdi:waypoint x="590" y="1131" />
+        <omgdi:waypoint x="590" y="1241" />
+        <omgdi:waypoint x="1570" y="1241" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="606" y="1206" width="87" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0i34kv7_di" bpmnElement="Flow_0i34kv7">
+        <omgdi:waypoint x="2440" y="1091" />
+        <omgdi:waypoint x="2440" y="480" />
+        <omgdi:waypoint x="1620" y="480" />
+        <omgdi:waypoint x="1620" y="701" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1636" y="506" width="87" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0oa7ght_di" bpmnElement="Flow_0oa7ght">
+        <omgdi:waypoint x="2860" y="1171" />
+        <omgdi:waypoint x="2860" y="1240" />
+        <omgdi:waypoint x="3020" y="1240" />
+        <omgdi:waypoint x="3020" y="480" />
+        <omgdi:waypoint x="1620" y="480" />
+        <omgdi:waypoint x="1620" y="701" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yq1vgu_di" bpmnElement="Flow_0yq1vgu">
+        <omgdi:waypoint x="2720" y="1171" />
+        <omgdi:waypoint x="2720" y="1240" />
+        <omgdi:waypoint x="3020" y="1240" />
+        <omgdi:waypoint x="3020" y="480" />
+        <omgdi:waypoint x="1620" y="480" />
+        <omgdi:waypoint x="1620" y="701" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15n4tfn_di" bpmnElement="Flow_15n4tfn">
+        <omgdi:waypoint x="2580" y="1171" />
+        <omgdi:waypoint x="2580" y="1240" />
+        <omgdi:waypoint x="3020" y="1240" />
+        <omgdi:waypoint x="3020" y="480" />
+        <omgdi:waypoint x="1620" y="480" />
+        <omgdi:waypoint x="1620" y="701" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_1hxu7hg_di" bpmnElement="Association_1hxu7hg">
-        <omgdi:waypoint x="1034" y="701" />
-        <omgdi:waypoint x="1050" y="680" />
+        <omgdi:waypoint x="1038" y="701" />
+        <omgdi:waypoint x="1053" y="680" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_02erx7j_di" bpmnElement="Association_02erx7j">
-        <omgdi:waypoint x="684" y="681" />
-        <omgdi:waypoint x="701" y="659" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_1kd1zdz_di" bpmnElement="TextAnnotation_1kd1zdz">
-        <omgdc:Bounds x="1050" y="594" width="132" height="86" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_19tflg7_di" bpmnElement="TextAnnotation_19tflg7">
         <omgdc:Bounds x="1240" y="594" width="130" height="86" />
         <bpmndi:BPMNLabel />
@@ -615,6 +718,26 @@ Output: Next Status</text>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_14eljcp_di" bpmnElement="TextAnnotation_14eljcp">
         <omgdc:Bounds x="700" y="573" width="123" height="86" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0m6l7jr_di" bpmnElement="Association_0m6l7jr">
+        <omgdi:waypoint x="1228" y="701" />
+        <omgdi:waypoint x="1243" y="680" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1iqrhtz_di" bpmnElement="Association_1iqrhtz">
+        <omgdi:waypoint x="1647" y="701" />
+        <omgdi:waypoint x="1666" y="673" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1ggjxse_di" bpmnElement="Association_1ggjxse">
+        <omgdi:waypoint x="2497" y="701" />
+        <omgdi:waypoint x="2516" y="673" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_02erx7j_di" bpmnElement="Association_02erx7j">
+        <omgdi:waypoint x="684" y="681" />
+        <omgdi:waypoint x="701" y="659" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1kd1zdz_di" bpmnElement="TextAnnotation_1kd1zdz">
+        <omgdc:Bounds x="1050" y="594" width="132" height="86" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
