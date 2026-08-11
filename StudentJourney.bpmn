@@ -836,7 +836,7 @@ Output: Next Status</bpmn:text>
     <bpmn:sequenceFlow id="Flow_1jsz4zu" name="Suspension period is over" sourceRef="Activity_1c46jjx" targetRef="Activity_12nugk7" />
     <bpmn:sequenceFlow id="Flow_0skjzah" sourceRef="Activity_12nugk7" targetRef="Activity_08mefw3" />
     <bpmn:sequenceFlow id="Flow_05e5nrk" name="Student enrolls for the next term" sourceRef="Activity_1io3ega" targetRef="Activity_08mefw3" />
-    <bpmn:sequenceFlow id="Flow_0m0j43o" name="Student exits the university" sourceRef="Activity_1io3ega" targetRef="Activity_1l8vvsb" />
+    <bpmn:sequenceFlow id="Flow_0m0j43o" sourceRef="Activity_1io3ega" targetRef="Activity_1l8vvsb" />
     <bpmn:sequenceFlow id="Flow_0y0j72k" name="Student returns" sourceRef="Activity_19ib31i" targetRef="Activity_0863bgx" />
     <bpmn:sequenceFlow id="Flow_0doa1pj" sourceRef="Activity_19ib31i" targetRef="Activity_1l8vvsb" />
     <bpmn:sequenceFlow id="Flow_08q2vlp" sourceRef="Activity_0lgost7" targetRef="Activity_0863bgx" />

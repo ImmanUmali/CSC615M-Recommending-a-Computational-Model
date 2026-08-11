@@ -668,12 +668,13 @@ Output: Next Status</text>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0i34kv7_di" bpmnElement="Flow_0i34kv7">
-        <omgdi:waypoint x="2440" y="1091" />
-        <omgdi:waypoint x="2440" y="480" />
+        <omgdi:waypoint x="2390" y="1131" />
+        <omgdi:waypoint x="2350" y="1131" />
+        <omgdi:waypoint x="2350" y="480" />
         <omgdi:waypoint x="1620" y="480" />
         <omgdi:waypoint x="1620" y="701" />
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds x="1636" y="506" width="87" height="27" />
+          <omgdc:Bounds x="1629" y="506" width="87" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0oa7ght_di" bpmnElement="Flow_0oa7ght">
