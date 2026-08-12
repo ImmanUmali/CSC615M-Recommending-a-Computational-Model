@@ -689,7 +689,7 @@ Output: Next Status</bpmn:text>
     </bpmn:laneSet>
     <bpmn:businessRuleTask id="Activity_1ugml7a" name="Determine Student Program Status">
       <bpmn:extensionElements>
-        <zeebe:calledDecision />
+        <zeebe:calledDecision decisionId="determineStudentProgramStatus" resultVariable="nextState" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_10pz8bq</bpmn:incoming>
       <bpmn:outgoing>Flow_0xhe7vk</bpmn:outgoing>
@@ -721,7 +721,7 @@ Output: Next Status</bpmn:text>
     </bpmn:task>
     <bpmn:businessRuleTask id="Activity_13mq2al" name="Determine Student Retention in a Program">
       <bpmn:extensionElements>
-        <zeebe:calledDecision />
+        <zeebe:calledDecision decisionId="determineRetention" resultVariable="nextState" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0n6v7hq</bpmn:incoming>
       <bpmn:incoming>Flow_00wzl7s</bpmn:incoming>
@@ -778,7 +778,7 @@ Output: Next Status</bpmn:text>
     </bpmn:exclusiveGateway>
     <bpmn:businessRuleTask id="Activity_0evs002" name="Assess Graduation Eligibility - Final Check">
       <bpmn:extensionElements>
-        <zeebe:calledDecision />
+        <zeebe:calledDecision decisionId="assessGraduationEligibility" resultVariable="nextState" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0ns97sx</bpmn:incoming>
       <bpmn:outgoing>Flow_1qcqykp</bpmn:outgoing>
@@ -882,14 +882,23 @@ Output: Next Status</bpmn:text>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:businessRuleTask id="Activity_0kwxbaq" name="Determine Enrollment">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="determineEnrollment" resultVariable="nextState" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_17kihll</bpmn:incoming>
       <bpmn:outgoing>Flow_1f6arv1</bpmn:outgoing>
     </bpmn:businessRuleTask>
     <bpmn:businessRuleTask id="Activity_0vutv7i" name="Evaluate Exit">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="evaluateExit" resultVariable="nextState" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1sj7pzy</bpmn:incoming>
       <bpmn:outgoing>Flow_0ml0hu5</bpmn:outgoing>
     </bpmn:businessRuleTask>
     <bpmn:businessRuleTask id="Activity_0g2th82" name="Evaluate Disciplinary Verdict">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="evaluateDisciplinaryVerdict" resultVariable="nextState" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_01t5fwu</bpmn:incoming>
       <bpmn:outgoing>Flow_0w42enp</bpmn:outgoing>
     </bpmn:businessRuleTask>
@@ -899,6 +908,9 @@ Output: Next Status</bpmn:text>
       <bpmn:outgoing>Flow_0pqiwup</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:businessRuleTask id="Activity_1umt30t" name="Determine Academic Status">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="determineAcademicStatus" resultVariable="nextState" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_06vah72</bpmn:incoming>
       <bpmn:incoming>Flow_0hg8bjq</bpmn:incoming>
       <bpmn:incoming>Flow_1iv4hwm</bpmn:incoming>
@@ -1058,6 +1070,9 @@ Output: Next Status</bpmn:text>
       <bpmn:messageEventDefinition id="MessageEventDefinition_09say5z" />
     </bpmn:intermediateCatchEvent>
     <bpmn:businessRuleTask id="Activity_1acvqtj" name="Determine Academic Status">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="determineAcademicStatus" resultVariable="nextState" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_07qjry1</bpmn:incoming>
       <bpmn:outgoing>Flow_1f991xv</bpmn:outgoing>
     </bpmn:businessRuleTask>
