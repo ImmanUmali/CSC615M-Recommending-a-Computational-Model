@@ -708,10 +708,10 @@ Output: Next Status</bpmn:text>
       <bpmn:outgoing>Flow_1m0hxnn</bpmn:outgoing>
       <bpmn:outgoing>Flow_10wyfdh</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:endEvent id="Event_16l5qeq" name="Mark as &#34;Exited on Good Standing&#34;">
+    <bpmn:endEvent id="Event_16l5qeq" name="Update Student Status to S4.1: Exited on Good Standing">
       <bpmn:incoming>Flow_0ml0hu5</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Task_1hcentk" name="Mark as &#34;Active&#34;">
+    <bpmn:task id="Task_1hcentk" name="Update Student Status to S2.0: Active">
       <bpmn:incoming>Flow_1f6arv1</bpmn:incoming>
       <bpmn:outgoing>Flow_101uio7</bpmn:outgoing>
     </bpmn:task>
@@ -733,7 +733,7 @@ Output: Next Status</bpmn:text>
       <bpmn:incoming>Flow_1n47rbz</bpmn:incoming>
       <bpmn:outgoing>Flow_01t5fwu</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_1c46jjx" name="Mark as &#34;Inactive - Suspended&#34;">
+    <bpmn:task id="Activity_1c46jjx" name="Update Student Status to S3.2: Inactive - Suspended">
       <bpmn:incoming>Flow_0pqiwup</bpmn:incoming>
       <bpmn:outgoing>Flow_1jsz4zu</bpmn:outgoing>
     </bpmn:task>
@@ -741,34 +741,34 @@ Output: Next Status</bpmn:text>
       <bpmn:incoming>Flow_1jsz4zu</bpmn:incoming>
       <bpmn:outgoing>Flow_0skjzah</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:endEvent id="Event_0cqapsh" name="Mark as &#34;Exited - Permanent Disqualification&#34;">
+    <bpmn:endEvent id="Event_0cqapsh" name="Update Student Status to S4.2: Exited - Permanent Disqualification">
       <bpmn:incoming>Flow_1ig7vwm</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Activity_1io3ega" name="Mark as &#34;Active - Residency&#34;">
+    <bpmn:task id="Activity_1io3ega" name="Update Student Status to  S2.1: Active - Residency">
       <bpmn:incoming>Flow_1cpme7z</bpmn:incoming>
       <bpmn:outgoing>Flow_05e5nrk</bpmn:outgoing>
       <bpmn:outgoing>Flow_0m0j43o</bpmn:outgoing>
       <bpmn:outgoing>Flow_12p6tf3</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_19ib31i" name="Mark as &#34;Active - Under LOA&#34;">
+    <bpmn:task id="Activity_19ib31i" name="Update Student Status to S2.2: Active - Under LOA">
       <bpmn:incoming>Flow_1bzxgac</bpmn:incoming>
       <bpmn:outgoing>Flow_0y0j72k</bpmn:outgoing>
       <bpmn:outgoing>Flow_0doa1pj</bpmn:outgoing>
       <bpmn:outgoing>Flow_0la6r4p</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_0lgost7" name="Mark as &#34;Inactive - Prolonged Leave&#34;">
+    <bpmn:task id="Activity_0lgost7" name="Update Student Status to S2.3: Inactive - Prolonged Leave">
       <bpmn:incoming>Flow_1m0hxnn</bpmn:incoming>
       <bpmn:outgoing>Flow_08q2vlp</bpmn:outgoing>
       <bpmn:outgoing>Flow_051qyuy</bpmn:outgoing>
       <bpmn:outgoing>Flow_0ox1mfp</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_0ykwl3e" name="Mark as &#34;Inactive - AWOL&#34;">
+    <bpmn:task id="Activity_0ykwl3e" name="Update Student Status to S3.1: Inactive - AWOL">
       <bpmn:incoming>Flow_10wyfdh</bpmn:incoming>
       <bpmn:outgoing>Flow_1mp9b4r</bpmn:outgoing>
       <bpmn:outgoing>Flow_0rhz5xw</bpmn:outgoing>
       <bpmn:outgoing>Flow_097z2qd</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_0329nyk" name="Mark as &#34;Graduated&#34;">
+    <bpmn:task id="Activity_0329nyk" name="Update Student Status to S4.0: Graduated">
       <bpmn:incoming>Flow_1dhr8zy</bpmn:incoming>
     </bpmn:task>
     <bpmn:businessRuleTask id="Activity_1tamhw2" name="Determine Academic Status">
@@ -806,7 +806,7 @@ Output: Next Status</bpmn:text>
       <bpmn:incoming>Flow_1rqgspd</bpmn:incoming>
       <bpmn:outgoing>Flow_1sj7pzy</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_1x00ukt" name="Mark as &#34;Active without Enrollment&#34;">
+    <bpmn:task id="Activity_1x00ukt" name="Update Student Status to S1.0: Active without Enrollment">
       <bpmn:incoming>Flow_13nv60m</bpmn:incoming>
       <bpmn:incoming>Flow_16jaqrl</bpmn:incoming>
       <bpmn:outgoing>Flow_0erom66</bpmn:outgoing>
@@ -1511,7 +1511,7 @@ Output: Next Status</bpmn:text>
       <bpmndi:BPMNShape id="BPMNShape_1f7rp32" bpmnElement="Event_16l5qeq">
         <dc:Bounds x="6232" y="1114" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="6208" y="1158" width="77" height="40" />
+          <dc:Bounds x="6208" y="1158" width="77" height="53" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_1wf815k" bpmnElement="Task_1hcentk">
@@ -1539,7 +1539,7 @@ Output: Next Status</bpmn:text>
       <bpmndi:BPMNShape id="BPMNShape_07lf3fa" bpmnElement="Event_0cqapsh">
         <dc:Bounds x="7368" y="974" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="7325" y="1028" width="123" height="40" />
+          <dc:Bounds x="7330" y="1028" width="114" height="53" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_1ej4ci7" bpmnElement="Activity_1io3ega">
@@ -2387,16 +2387,16 @@ Output: Next Status</bpmn:text>
       <bpmndi:BPMNShape id="Participant_0oexowt_di" bpmnElement="Participant_0oexowt" isHorizontal="true">
         <dc:Bounds x="5650" y="1730" width="2770" height="1020" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1ptbmch_di" bpmnElement="Lane_1ptbmch" isHorizontal="true">
-        <dc:Bounds x="5680" y="2260" width="2740" height="490" />
+      <bpmndi:BPMNShape id="Lane_0gyu7jl_di" bpmnElement="Lane_0gyu7jl" isHorizontal="true">
+        <dc:Bounds x="5680" y="1730" width="2740" height="160" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0xwb46k_di" bpmnElement="Lane_0xwb46k" isHorizontal="true">
         <dc:Bounds x="5680" y="1890" width="2740" height="370" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_0gyu7jl_di" bpmnElement="Lane_0gyu7jl" isHorizontal="true">
-        <dc:Bounds x="5680" y="1730" width="2740" height="160" />
+      <bpmndi:BPMNShape id="Lane_1ptbmch_di" bpmnElement="Lane_1ptbmch" isHorizontal="true">
+        <dc:Bounds x="5680" y="2260" width="2740" height="490" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1ugml7a_di" bpmnElement="Activity_1ugml7a">
@@ -2703,18 +2703,6 @@ Output: Next Status</bpmn:text>
           <dc:Bounds x="6519" y="1820" width="82" height="53" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0vav3kf_di" bpmnElement="Association_0vav3kf">
-        <di:waypoint x="6870" y="2110" />
-        <di:waypoint x="6894" y="2062" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1u5sou7_di" bpmnElement="Association_1u5sou7">
-        <di:waypoint x="7676" y="2110" />
-        <di:waypoint x="7690" y="2090" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1l5hzs8_di" bpmnElement="Association_1l5hzs8">
-        <di:waypoint x="5908" y="2110" />
-        <di:waypoint x="5899" y="2083" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="BPMNShape_0s3cigf" bpmnElement="TextAnnotation_0jk3n34">
         <dc:Bounds x="750" y="492" width="310" height="43" />
         <bpmndi:BPMNLabel />
@@ -2739,6 +2727,24 @@ Output: Next Status</bpmn:text>
         <dc:Bounds x="5966" y="949" width="123" height="86" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1kggyrg_di" bpmnElement="TextAnnotation_1kggyrg">
+        <dc:Bounds x="6870" y="1990" width="190" height="72" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1i6hx54_di" bpmnElement="TextAnnotation_1i6hx54">
+        <dc:Bounds x="7690" y="1994" width="160" height="100" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1bh3pic_di" bpmnElement="TextAnnotation_1bh3pic">
+        <dc:Bounds x="5820" y="1968" width="102" height="115" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1u4k9rh_di" bpmnElement="Flow_1u4k9rh">
+        <di:waypoint x="5400" y="1152" />
+        <di:waypoint x="5400" y="1650" />
+        <di:waypoint x="6850" y="1650" />
+        <di:waypoint x="6850" y="1792" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_0abil8c" bpmnElement="Association_1aew2sc">
         <di:waypoint x="800" y="582" />
         <di:waypoint x="800" y="535" />
@@ -2763,23 +2769,17 @@ Output: Next Status</bpmn:text>
         <di:waypoint x="5950" y="997" />
         <di:waypoint x="5966" y="1033" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_1kggyrg_di" bpmnElement="TextAnnotation_1kggyrg">
-        <dc:Bounds x="6870" y="1990" width="190" height="72" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1i6hx54_di" bpmnElement="TextAnnotation_1i6hx54">
-        <dc:Bounds x="7690" y="1994" width="160" height="100" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1bh3pic_di" bpmnElement="TextAnnotation_1bh3pic">
-        <dc:Bounds x="5820" y="1968" width="102" height="115" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_1u4k9rh_di" bpmnElement="Flow_1u4k9rh">
-        <di:waypoint x="5400" y="1152" />
-        <di:waypoint x="5400" y="1650" />
-        <di:waypoint x="6850" y="1650" />
-        <di:waypoint x="6850" y="1792" />
+      <bpmndi:BPMNEdge id="Association_0vav3kf_di" bpmnElement="Association_0vav3kf">
+        <di:waypoint x="6870" y="2110" />
+        <di:waypoint x="6894" y="2062" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1u5sou7_di" bpmnElement="Association_1u5sou7">
+        <di:waypoint x="7676" y="2110" />
+        <di:waypoint x="7690" y="2090" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1l5hzs8_di" bpmnElement="Association_1l5hzs8">
+        <di:waypoint x="5908" y="2110" />
+        <di:waypoint x="5899" y="2083" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
