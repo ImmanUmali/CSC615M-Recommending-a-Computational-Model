@@ -395,7 +395,7 @@
       </rule>
       <rule id="DecisionRule_07odm0j">
         <inputEntry id="UnaryTests_1si5qpg">
-          <text>"Active"</text>
+          <text>"Active","Active - Without Enrollment","Active - Residency"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_05tc1cu">
           <text>Did not enroll</text>
