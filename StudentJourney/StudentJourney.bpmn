@@ -2588,10 +2588,6 @@ Output: Next Status</bpmn:text>
           <dc:Bounds x="5675" y="2335" width="50" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_1l5hzs8_di" bpmnElement="Association_1l5hzs8">
-        <di:waypoint x="5875" y="2110" />
-        <di:waypoint x="5876" y="2083" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_10pz8bq_di" bpmnElement="Flow_10pz8bq">
         <di:waypoint x="6850" y="1828" />
         <di:waypoint x="6850" y="2110" />
@@ -2823,6 +2819,10 @@ Output: Next Status</bpmn:text>
         <di:waypoint x="5846" y="2310" />
         <di:waypoint x="5718" y="2310" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1l5hzs8_di" bpmnElement="Association_1l5hzs8">
+        <di:waypoint x="5875" y="2110" />
+        <di:waypoint x="5876" y="2083" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="BPMNShape_0s3cigf" bpmnElement="TextAnnotation_0jk3n34">
         <dc:Bounds x="750" y="492" width="310" height="43" />
         <bpmndi:BPMNLabel />
@@ -2855,6 +2855,24 @@ Output: Next Status</bpmn:text>
         <dc:Bounds x="5820" y="1968" width="102" height="115" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1gt3kbx_di" bpmnElement="Flow_1gt3kbx">
+        <di:waypoint x="8640" y="2332" />
+        <di:waypoint x="8640" y="1570" />
+        <di:waypoint x="5660" y="1570" />
+        <di:waypoint x="5660" y="1288" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1k692m6_di" bpmnElement="Flow_1k692m6">
+        <di:waypoint x="5550" y="1270" />
+        <di:waypoint x="5550" y="1650" />
+        <di:waypoint x="6850" y="1650" />
+        <di:waypoint x="6850" y="1792" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0snwb4e_di" bpmnElement="Flow_0snwb4e">
+        <di:waypoint x="5682" y="2310" />
+        <di:waypoint x="5500" y="2310" />
+        <di:waypoint x="5500" y="1520" />
+        <di:waypoint x="5458" y="1520" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_0abil8c" bpmnElement="Association_1aew2sc">
         <di:waypoint x="800" y="582" />
         <di:waypoint x="800" y="535" />
@@ -2882,24 +2900,6 @@ Output: Next Status</bpmn:text>
       <bpmndi:BPMNEdge id="Association_1u5sou7_di" bpmnElement="Association_1u5sou7">
         <di:waypoint x="7676" y="2110" />
         <di:waypoint x="7690" y="2090" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1gt3kbx_di" bpmnElement="Flow_1gt3kbx">
-        <di:waypoint x="8640" y="2332" />
-        <di:waypoint x="8640" y="1570" />
-        <di:waypoint x="5660" y="1570" />
-        <di:waypoint x="5660" y="1288" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1k692m6_di" bpmnElement="Flow_1k692m6">
-        <di:waypoint x="5550" y="1270" />
-        <di:waypoint x="5550" y="1650" />
-        <di:waypoint x="6850" y="1650" />
-        <di:waypoint x="6850" y="1792" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0snwb4e_di" bpmnElement="Flow_0snwb4e">
-        <di:waypoint x="5682" y="2310" />
-        <di:waypoint x="5500" y="2310" />
-        <di:waypoint x="5500" y="1520" />
-        <di:waypoint x="5458" y="1520" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
