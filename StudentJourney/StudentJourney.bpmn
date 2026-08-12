@@ -5,9 +5,9 @@
     <bpmn:participant id="Participant_0oexowt" name="DLSU Student Program Status" processRef="Process_1mjjyfv" />
     <bpmn:participant id="Participant_0u1l96i" name="DLSUStudent Status" processRef="Process_0tek8md" />
     <bpmn:messageFlow id="Flow_1gt3kbx" sourceRef="Event_0pqwq9t" targetRef="Event_1m6z4sk" />
-    <bpmn:messageFlow id="Flow_1k692m6" sourceRef="Event_1ust1rf" targetRef="StartEvent_1" />
     <bpmn:messageFlow id="Flow_0snwb4e" sourceRef="Event_11qbdfg" targetRef="Event_10wb5e1" />
     <bpmn:messageFlow id="Flow_11frqcf" sourceRef="Event_0x5xt22" targetRef="Event_0feh6pg" />
+    <bpmn:messageFlow id="Flow_0vqnj9s" sourceRef="Event_0x5xt22" targetRef="StartEvent_1" />
     <bpmn:textAnnotation id="TextAnnotation_0jk3n34">
       <bpmn:text>[ADDED TASK] Should be considered a different task from compiling requirements.</bpmn:text>
     </bpmn:textAnnotation>
@@ -874,13 +874,11 @@ Output: Next Status</bpmn:text>
         <bpmn:flowNodeRef>Activity_0ykwl3e</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1x00ukt</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0863bgx</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_11gmpra</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_1ust1rf</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1m6z4sk</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_10wb5e1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1acvqtj</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_0feh6pg</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1pf96dv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0feh6pg</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:businessRuleTask id="Activity_0kwxbaq" name="Determine Enrollment">
@@ -1001,8 +999,8 @@ Output: Next Status</bpmn:text>
     </bpmn:task>
     <bpmn:task id="Activity_1x00ukt" name="Update Student Status to S1.0: Active without Enrollment">
       <bpmn:incoming>Flow_13nv60m</bpmn:incoming>
-      <bpmn:incoming>Flow_0axotoh</bpmn:incoming>
       <bpmn:incoming>Flow_0vgwvod</bpmn:incoming>
+      <bpmn:incoming>Flow_0d8qusb</bpmn:incoming>
       <bpmn:outgoing>Flow_0erom66</bpmn:outgoing>
       <bpmn:outgoing>Flow_1rqgspd</bpmn:outgoing>
       <bpmn:outgoing>Flow_1n47rbz</bpmn:outgoing>
@@ -1013,27 +1011,10 @@ Output: Next Status</bpmn:text>
       <bpmn:incoming>Flow_1mp9b4r</bpmn:incoming>
       <bpmn:outgoing>Flow_13nv60m</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:parallelGateway id="Gateway_11gmpra">
-      <bpmn:incoming>Flow_0d8qusb</bpmn:incoming>
-      <bpmn:outgoing>Flow_0axotoh</bpmn:outgoing>
-      <bpmn:outgoing>Flow_0y2d550</bpmn:outgoing>
-    </bpmn:parallelGateway>
-    <bpmn:intermediateThrowEvent id="Event_1ust1rf" name="Student officially admitted">
-      <bpmn:incoming>Flow_0y2d550</bpmn:incoming>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0dq2tmb" />
-    </bpmn:intermediateThrowEvent>
     <bpmn:intermediateCatchEvent id="Event_1m6z4sk" name="Application to shift approved">
       <bpmn:outgoing>Flow_0vgwvod</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_1e76haz" />
     </bpmn:intermediateCatchEvent>
-    <bpmn:intermediateCatchEvent id="Event_10wb5e1" name="Student graduated">
-      <bpmn:outgoing>Flow_07qjry1</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_09say5z" />
-    </bpmn:intermediateCatchEvent>
-    <bpmn:businessRuleTask id="Activity_1acvqtj" name="Determine Academic Status">
-      <bpmn:incoming>Flow_07qjry1</bpmn:incoming>
-      <bpmn:outgoing>Flow_1f991xv</bpmn:outgoing>
-    </bpmn:businessRuleTask>
     <bpmn:sequenceFlow id="Flow_17kihll" sourceRef="Activity_08mefw3" targetRef="Activity_0kwxbaq" />
     <bpmn:sequenceFlow id="Flow_1f6arv1" sourceRef="Activity_0kwxbaq" targetRef="Task_1hcentk" />
     <bpmn:sequenceFlow id="Flow_1sj7pzy" sourceRef="Activity_1l8vvsb" targetRef="Activity_0vutv7i" />
@@ -1074,19 +1055,25 @@ Output: Next Status</bpmn:text>
     <bpmn:sequenceFlow id="Flow_0erom66" name="Student enrolls for next term" sourceRef="Activity_1x00ukt" targetRef="Activity_08mefw3" />
     <bpmn:sequenceFlow id="Flow_1rqgspd" name="Student exits the university" sourceRef="Activity_1x00ukt" targetRef="Activity_1l8vvsb" />
     <bpmn:sequenceFlow id="Flow_13nv60m" sourceRef="Activity_0863bgx" targetRef="Activity_1x00ukt" />
-    <bpmn:sequenceFlow id="Flow_0axotoh" sourceRef="Gateway_11gmpra" targetRef="Activity_1x00ukt" />
     <bpmn:sequenceFlow id="Flow_0vgwvod" sourceRef="Event_1m6z4sk" targetRef="Activity_1x00ukt" />
-    <bpmn:sequenceFlow id="Flow_0y2d550" sourceRef="Gateway_11gmpra" targetRef="Event_1ust1rf" />
     <bpmn:sequenceFlow id="Flow_07qjry1" sourceRef="Event_10wb5e1" targetRef="Activity_1acvqtj" />
     <bpmn:sequenceFlow id="Flow_1f991xv" sourceRef="Activity_1acvqtj" targetRef="Event_1pf96dv" />
+    <bpmn:sequenceFlow id="Flow_0d8qusb" sourceRef="Event_0feh6pg" targetRef="Activity_1x00ukt" />
+    <bpmn:intermediateCatchEvent id="Event_10wb5e1" name="Student graduated">
+      <bpmn:outgoing>Flow_07qjry1</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_09say5z" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:businessRuleTask id="Activity_1acvqtj" name="Determine Academic Status">
+      <bpmn:incoming>Flow_07qjry1</bpmn:incoming>
+      <bpmn:outgoing>Flow_1f991xv</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:endEvent id="Event_1pf96dv" name="Update Student Status to S4.0: Graduated">
+      <bpmn:incoming>Flow_1f991xv</bpmn:incoming>
+    </bpmn:endEvent>
     <bpmn:intermediateCatchEvent id="Event_0feh6pg" name="Student officially admited">
       <bpmn:outgoing>Flow_0d8qusb</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_0jpwny5" />
     </bpmn:intermediateCatchEvent>
-    <bpmn:sequenceFlow id="Flow_0d8qusb" sourceRef="Event_0feh6pg" targetRef="Gateway_11gmpra" />
-    <bpmn:endEvent id="Event_1pf96dv" name="Update Student Status to S4.0: Graduated">
-      <bpmn:incoming>Flow_1f991xv</bpmn:incoming>
-    </bpmn:endEvent>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0wnlh6o">
@@ -2148,15 +2135,6 @@ Output: Next Status</bpmn:text>
         <dc:Bounds x="8975" y="1415" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1sorzsl_di" bpmnElement="Gateway_11gmpra">
-        <dc:Bounds x="6444" y="1022" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1g2q4zg_di" bpmnElement="Event_1ust1rf">
-        <dc:Bounds x="6451" y="1169" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="6359" y="1171" width="80" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0deqx30_di" bpmnElement="Event_1m6z4sk">
         <dc:Bounds x="6561" y="1187" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -2164,25 +2142,25 @@ Output: Next Status</bpmn:text>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1vuqy5d_di" bpmnElement="Event_10wb5e1">
-        <dc:Bounds x="6287" y="1417" width="36" height="36" />
+        <dc:Bounds x="6087" y="1417" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="6280" y="1463" width="50" height="27" />
+          <dc:Bounds x="6080" y="1379.5" width="50" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_1mn7q93" bpmnElement="Activity_1acvqtj">
-        <dc:Bounds x="6255" y="1285" width="100" height="80" />
+        <dc:Bounds x="6230" y="1395" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0xi3nmj_di" bpmnElement="Event_0feh6pg">
-        <dc:Bounds x="6312" y="1029" width="36" height="36" />
+      <bpmndi:BPMNShape id="Event_1pf96dv_di" bpmnElement="Event_1pf96dv">
+        <dc:Bounds x="6412" y="1417" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="6290" y="1072" width="80" height="40" />
+          <dc:Bounds x="6391" y="1463" width="77" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1pf96dv_di" bpmnElement="Event_1pf96dv">
-        <dc:Bounds x="6112" y="1307" width="36" height="36" />
+      <bpmndi:BPMNShape id="Event_0xi3nmj_di" bpmnElement="Event_0feh6pg">
+        <dc:Bounds x="6432" y="1029" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="6091" y="1353" width="77" height="40" />
+          <dc:Bounds x="6410" y="1072" width="80" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_1fq42dr" bpmnElement="Flow_17kihll">
@@ -2469,31 +2447,23 @@ Output: Next Status</bpmn:text>
         <di:waypoint x="6619" y="1455" />
         <di:waypoint x="6619" y="1087" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0axotoh_di" bpmnElement="Flow_0axotoh">
-        <di:waypoint x="6494" y="1047" />
-        <di:waypoint x="6569" y="1047" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0vgwvod_di" bpmnElement="Flow_0vgwvod">
         <di:waypoint x="6579" y="1187" />
         <di:waypoint x="6579" y="1137" />
         <di:waypoint x="6619" y="1137" />
         <di:waypoint x="6619" y="1087" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0y2d550_di" bpmnElement="Flow_0y2d550">
-        <di:waypoint x="6469" y="1072" />
-        <di:waypoint x="6469" y="1169" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_07qjry1_di" bpmnElement="Flow_07qjry1">
-        <di:waypoint x="6305" y="1417" />
-        <di:waypoint x="6305" y="1365" />
+        <di:waypoint x="6123" y="1435" />
+        <di:waypoint x="6230" y="1435" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1f991xv_di" bpmnElement="Flow_1f991xv">
-        <di:waypoint x="6255" y="1325" />
-        <di:waypoint x="6148" y="1325" />
+        <di:waypoint x="6330" y="1435" />
+        <di:waypoint x="6412" y="1435" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0d8qusb_di" bpmnElement="Flow_0d8qusb">
-        <di:waypoint x="6348" y="1047" />
-        <di:waypoint x="6444" y="1047" />
+        <di:waypoint x="6468" y="1047" />
+        <di:waypoint x="6569" y="1047" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_0oexowt_di" bpmnElement="Participant_0oexowt" isHorizontal="true">
         <dc:Bounds x="5805" y="1750" width="3390" height="1020" />
@@ -2891,16 +2861,9 @@ Output: Next Status</bpmn:text>
         <di:waypoint x="6579" y="1570" />
         <di:waypoint x="6579" y="1223" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1k692m6_di" bpmnElement="Flow_1k692m6">
-        <di:waypoint x="6469" y="1205" />
-        <di:waypoint x="6469" y="1650" />
-        <di:waypoint x="7255" y="1650" />
-        <di:waypoint x="7255" y="1812" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0snwb4e_di" bpmnElement="Flow_0snwb4e">
         <di:waypoint x="6105" y="2312" />
-        <di:waypoint x="6105" y="1435" />
-        <di:waypoint x="6287" y="1435" />
+        <di:waypoint x="6105" y="1453" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_0abil8c" bpmnElement="Association_1aew2sc">
         <di:waypoint x="800" y="582" />
@@ -2925,7 +2888,7 @@ Output: Next Status</bpmn:text>
       <bpmndi:BPMNEdge id="Flow_11frqcf_di" bpmnElement="Flow_11frqcf">
         <di:waypoint x="5390" y="530" />
         <di:waypoint x="5390" y="1047" />
-        <di:waypoint x="6312" y="1047" />
+        <di:waypoint x="6432" y="1047" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1kggyrg_di" bpmnElement="TextAnnotation_1kggyrg">
         <dc:Bounds x="7275" y="2010" width="190" height="72" />
@@ -2939,6 +2902,12 @@ Output: Next Status</bpmn:text>
         <dc:Bounds x="6225" y="1988" width="102" height="115" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0vqnj9s_di" bpmnElement="Flow_0vqnj9s">
+        <di:waypoint x="5390" y="530" />
+        <di:waypoint x="5390" y="1680" />
+        <di:waypoint x="7255" y="1680" />
+        <di:waypoint x="7255" y="1812" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

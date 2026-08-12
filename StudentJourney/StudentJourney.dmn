@@ -596,7 +596,7 @@
       <input id="InputClause_1ysehiz" label="Current Status">
         <inputExpression id="LiteralExpression_0hn4m7l" typeRef="string" />
       </input>
-      <input id="InputClause_0bi4bac" label="Event">
+      <input id="InputClause_0bi4bac" label="Event" biodi:width="365">
         <inputExpression id="LiteralExpression_1dtnjb2" typeRef="string">
           <text></text>
         </inputExpression>
@@ -610,7 +610,7 @@
           <text>Academic standards complied</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1p4u1j8">
-          <text>"Eligible"</text>
+          <text>Eligible</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0uvf3cb">
