@@ -1645,7 +1645,7 @@ Output: Next Status</bpmn:text>
       <bpmndi:BPMNShape id="Event_0deqx30_di" bpmnElement="Event_1m6z4sk">
         <dc:Bounds x="5642" y="1252" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="5552" y="1260" width="70" height="27" />
+          <dc:Bounds x="5575" y="1296" width="70" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1vuqy5d_di" bpmnElement="Event_10wb5e1">
