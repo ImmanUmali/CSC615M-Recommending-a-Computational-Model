@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1y42u6n" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1y42u6n" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
   <decision id="evaluate_application_rules" name="Evaluate Application Requirements">
     <decisionTable id="decisionTable_1o0uw3y">
       <input id="input1" label="Were mandatory requirements completed?">
@@ -692,70 +692,41 @@
       </rule>
     </decisionTable>
   </decision>
-  <decision id="Decision_106k66k" name="Evaluate Exit">
-    <decisionTable id="DecisionTable_1r7wv84">
-      <input id="InputClause_1x0arpm" label="Current Status">
-        <inputExpression id="LiteralExpression_1lr0c7b" typeRef="string" />
+  <decision id="evaluateExit" name="Evaluate Exit">
+    <decisionTable id="DecisionTable_0ho646f">
+      <input id="InputClause_0qe5ich" label="Current Status">
+        <inputExpression id="LiteralExpression_1grznot" typeRef="string" />
+        <inputValues id="UnaryTests_1gos1uu">
+          <text>"Active","Active - Without Enrollment","Inactive - Suspended","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL","Graduated","Exited on Good Standing","Exited - Permanent Disqualification"</text>
+        </inputValues>
       </input>
-      <input id="InputClause_1wu2rzm" label=" Event">
-        <inputExpression id="LiteralExpression_126y735" typeRef="string">
+      <input id="InputClause_0enbpdy" label="Event">
+        <inputExpression id="LiteralExpression_1rg0i0w" typeRef="Any">
           <text></text>
         </inputExpression>
       </input>
-      <output id="OutputClause_1bkldl9" label=" Next Status" typeRef="string" />
-      <rule id="DecisionRule_05dwgls">
-        <inputEntry id="UnaryTests_03e8dvy">
-          <text>P1.0 Eligible</text>
+      <input id="InputClause_02dlrak" label="Additional Condition">
+        <inputExpression id="LiteralExpression_1mgoemw" typeRef="Any">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1o3durl" label="Next Status" typeRef="string">
+        <outputValues id="UnaryTests_10drbny">
+          <text>"Active","Active - Without Enrollment","Inactive - Suspended","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL","Graduated","Exited on Good Standing","Exited - Permanent Disqualification"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_1dpy72q">
+        <inputEntry id="UnaryTests_11k104n">
+          <text>"Active","Active - Without Enrollment","Active - Residency","Active - LOA","Inactive - Prolonged Leave","Inactive - AWOL"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1cw2h0z">
-          <text>University exit submitted</text>
+        <inputEntry id="UnaryTests_19bkqfz">
+          <text>University exit</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_13uw48z">
-          <text>P3.1 Incomplete</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1i8613z">
-        <inputEntry id="UnaryTests_12z8ia1">
-          <text>P1.1 Probationary</text>
+        <inputEntry id="UnaryTests_03gu25j">
+          <text>Good standing</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_037veau">
-          <text>University Exit submitted</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_02kzex5">
-          <text>P3.1 Incomplete</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1tqwgtu">
-        <inputEntry id="UnaryTests_0zisiev">
-          <text>P1.2 SNAS</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_19lo6cw">
-          <text>University Exit submitted</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1o44bto">
-          <text>P3.1 Incomplete</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1jzq0ho">
-        <inputEntry id="UnaryTests_0yk641p">
-          <text>P1.3 Strict Probationary</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_07v8urv">
-          <text>University Exit submitted</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1m195l4">
-          <text>P3.1 Incomplete</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_0yphr91">
-        <inputEntry id="UnaryTests_03pfat4">
-          <text>P2.0 Candidate for Graduation</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_04wvvsc">
-          <text>University Exit submitted</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0g0r2h3">
-          <text>P3.1 Incomplete</text>
+        <outputEntry id="LiteralExpression_1rhxh6y">
+          <text>"Exited with GoodStanding"</text>
         </outputEntry>
       </rule>
     </decisionTable>
@@ -787,10 +758,12 @@
   <textAnnotation id="TextAnnotation_0eysq3l">
     <text>DMN Decision Tables for Application Student Statuses</text>
   </textAnnotation>
-  <association id="Association_1fyyl7g">
-    <sourceRef href="#TextAnnotation_0eysq3l" />
-    <targetRef href="#evaluate_application_rules" />
-  </association>
+  <textAnnotation id="TextAnnotation_1e6elxt">
+    <text>DMN Decision Tables for Student Statuses</text>
+  </textAnnotation>
+  <textAnnotation id="TextAnnotation_10k22vo">
+    <text>DMN Decision Tables for Combination of Student Statuses and Student Program Statuses</text>
+  </textAnnotation>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_04xschs">
       <dmndi:DMNShape id="DMNShape_154a61s" dmnElementRef="evaluate_application_rules">
@@ -818,24 +791,26 @@
         <dc:Bounds height="80" width="180" x="380" y="260" />
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_0av35t0" dmnElementRef="Decision_09xnvis">
-        <dc:Bounds height="80" width="180" x="610" y="80" />
+        <dc:Bounds height="80" width="180" x="590" y="80" />
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_1k71tmd" dmnElementRef="Decision_0q2riu1">
-        <dc:Bounds height="80" width="180" x="610" y="170" />
+        <dc:Bounds height="80" width="180" x="590" y="170" />
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="DMNShape_1loev9o" dmnElementRef="Decision_106k66k">
-        <dc:Bounds height="80" width="180" x="610" y="350" />
+      <dmndi:DMNShape id="DMNShape_1loev9o" dmnElementRef="evaluateExit">
+        <dc:Bounds height="80" width="180" x="380" y="350" />
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_0bpbcg7" dmnElementRef="Decision_1noze7w">
-        <dc:Bounds height="80" width="180" x="610" y="260" />
+        <dc:Bounds height="80" width="180" x="590" y="260" />
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_1fxntlm" dmnElementRef="TextAnnotation_0eysq3l">
-        <dc:Bounds height="80" width="100" x="190" y="-50" />
+        <dc:Bounds height="40" width="200" x="150" y="30" />
       </dmndi:DMNShape>
-      <dmndi:DMNEdge id="DMNEdge_09tv95a" dmnElementRef="Association_1fyyl7g">
-        <di:waypoint x="240" y="30" />
-        <di:waypoint x="240" y="80" />
-      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0jv6kzh" dmnElementRef="TextAnnotation_1e6elxt">
+        <dc:Bounds height="40" width="180" x="380" y="30" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0g6udp3" dmnElementRef="TextAnnotation_10k22vo">
+        <dc:Bounds height="40" width="270" x="585" y="30" />
+      </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
 </definitions>
