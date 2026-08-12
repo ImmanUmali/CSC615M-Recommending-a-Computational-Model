@@ -1030,7 +1030,7 @@ Output: Next Status</bpmn:text>
     <bpmn:sequenceFlow id="Flow_1cpme7z" name="Residency" sourceRef="Gateway_1bszcnp" targetRef="Activity_1io3ega" />
     <bpmn:sequenceFlow id="Flow_1bzxgac" name="LOA &#60;= maximum, last enrollment &#60;= 6 trimesters ago" sourceRef="Gateway_1bszcnp" targetRef="Activity_19ib31i" />
     <bpmn:sequenceFlow id="Flow_1m0hxnn" name="Last enrollment &#62; 6 months ago" sourceRef="Gateway_1bszcnp" targetRef="Activity_0lgost7" />
-    <bpmn:sequenceFlow id="Flow_10wyfdh" name="Last enrollment &#62; 6 months ago, no LOA filed" sourceRef="Gateway_1bszcnp" targetRef="Activity_0ykwl3e" />
+    <bpmn:sequenceFlow id="Flow_10wyfdh" name="Last enrollment &#60;= 6 months ago, no LOA filed" sourceRef="Gateway_1bszcnp" targetRef="Activity_0ykwl3e" />
     <bpmn:sequenceFlow id="Flow_101uio7" sourceRef="Task_1hcentk" targetRef="Gateway_0ls3m8t" />
     <bpmn:sequenceFlow id="Flow_1nyp8lo" sourceRef="Gateway_0ls3m8t" targetRef="Activity_1l8vvsb" />
     <bpmn:sequenceFlow id="Flow_0rz82p2" name="Student did not enroll within the enrollment period" sourceRef="Gateway_0ls3m8t" targetRef="Activity_19b4vuv" />
@@ -2368,7 +2368,7 @@ Output: Next Status</bpmn:text>
         <di:waypoint x="6715" y="657" />
         <di:waypoint x="6769" y="657" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="8044" y="1331" width="81" height="27" />
+          <dc:Bounds x="8029" y="1331" width="81" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0m0j43o_di" bpmnElement="Flow_0m0j43o">
