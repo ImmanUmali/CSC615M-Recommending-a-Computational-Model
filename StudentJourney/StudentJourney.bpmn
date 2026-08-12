@@ -866,19 +866,19 @@ Output: Next Status</bpmn:text>
         <bpmn:flowNodeRef>Gateway_0ls3m8t</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0rih61s</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1c46jjx</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_12nugk7</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0cqapsh</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1io3ega</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_19ib31i</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0lgost7</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0ykwl3e</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1x00ukt</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0863bgx</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1m6z4sk</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_10wb5e1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1acvqtj</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1pf96dv</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0feh6pg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_12nugk7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0863bgx</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:businessRuleTask id="Activity_0kwxbaq" name="Determine Enrollment">
@@ -939,10 +939,6 @@ Output: Next Status</bpmn:text>
       <bpmn:incoming>Flow_0pqiwup</bpmn:incoming>
       <bpmn:outgoing>Flow_1jsz4zu</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_12nugk7" name="Suspension lifted">
-      <bpmn:incoming>Flow_1jsz4zu</bpmn:incoming>
-      <bpmn:outgoing>Flow_0skjzah</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:endEvent id="Event_0cqapsh" name="Update Student Status to S4.2: Exited - Permanent Disqualification">
       <bpmn:incoming>Flow_1ig7vwm</bpmn:incoming>
     </bpmn:endEvent>
@@ -951,6 +947,7 @@ Output: Next Status</bpmn:text>
       <bpmn:outgoing>Flow_05e5nrk</bpmn:outgoing>
       <bpmn:outgoing>Flow_0m0j43o</bpmn:outgoing>
       <bpmn:outgoing>Flow_12p6tf3</bpmn:outgoing>
+      <bpmn:outgoing>Flow_09e2jnx</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Activity_19ib31i" name="Update Student Status to S2.2: Active - Under LOA">
       <bpmn:incoming>Flow_1bzxgac</bpmn:incoming>
@@ -966,6 +963,8 @@ Output: Next Status</bpmn:text>
     </bpmn:task>
     <bpmn:task id="Activity_0ykwl3e" name="Update Student Status to S3.1: Inactive - AWOL">
       <bpmn:incoming>Flow_10wyfdh</bpmn:incoming>
+      <bpmn:incoming>Flow_09e2jnx</bpmn:incoming>
+      <bpmn:incoming>Flow_1lh4gk3</bpmn:incoming>
       <bpmn:outgoing>Flow_1mp9b4r</bpmn:outgoing>
       <bpmn:outgoing>Flow_0rhz5xw</bpmn:outgoing>
       <bpmn:outgoing>Flow_097z2qd</bpmn:outgoing>
@@ -1004,12 +1003,7 @@ Output: Next Status</bpmn:text>
       <bpmn:outgoing>Flow_0erom66</bpmn:outgoing>
       <bpmn:outgoing>Flow_1rqgspd</bpmn:outgoing>
       <bpmn:outgoing>Flow_1n47rbz</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:task id="Activity_0863bgx" name="Approved Returnee">
-      <bpmn:incoming>Flow_0y0j72k</bpmn:incoming>
-      <bpmn:incoming>Flow_08q2vlp</bpmn:incoming>
-      <bpmn:incoming>Flow_1mp9b4r</bpmn:incoming>
-      <bpmn:outgoing>Flow_13nv60m</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1lh4gk3</bpmn:outgoing>
     </bpmn:task>
     <bpmn:intermediateCatchEvent id="Event_1m6z4sk" name="Application to shift approved">
       <bpmn:outgoing>Flow_0vgwvod</bpmn:outgoing>
@@ -1074,6 +1068,18 @@ Output: Next Status</bpmn:text>
       <bpmn:outgoing>Flow_0d8qusb</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_0jpwny5" />
     </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_09e2jnx" name="Student did not enroll" sourceRef="Activity_1io3ega" targetRef="Activity_0ykwl3e" />
+    <bpmn:sequenceFlow id="Flow_1lh4gk3" name="Student did not enroll" sourceRef="Activity_1x00ukt" targetRef="Activity_0ykwl3e" />
+    <bpmn:task id="Activity_12nugk7" name="Suspension lifted">
+      <bpmn:incoming>Flow_1jsz4zu</bpmn:incoming>
+      <bpmn:outgoing>Flow_0skjzah</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0863bgx" name="Approved Returnee">
+      <bpmn:incoming>Flow_0y0j72k</bpmn:incoming>
+      <bpmn:incoming>Flow_08q2vlp</bpmn:incoming>
+      <bpmn:incoming>Flow_1mp9b4r</bpmn:incoming>
+      <bpmn:outgoing>Flow_13nv60m</bpmn:outgoing>
+    </bpmn:task>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0wnlh6o">
@@ -2131,10 +2137,6 @@ Output: Next Status</bpmn:text>
         <dc:Bounds x="6569" y="1007" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_18izih9" bpmnElement="Activity_0863bgx">
-        <dc:Bounds x="8975" y="1415" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0deqx30_di" bpmnElement="Event_1m6z4sk">
         <dc:Bounds x="6561" y="1187" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -2162,6 +2164,10 @@ Output: Next Status</bpmn:text>
         <bpmndi:BPMNLabel>
           <dc:Bounds x="6410" y="1072" width="80" height="40" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_18izih9" bpmnElement="Activity_0863bgx">
+        <dc:Bounds x="8975" y="1430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_1fq42dr" bpmnElement="Flow_17kihll">
         <di:waypoint x="6819" y="697" />
@@ -2293,9 +2299,8 @@ Output: Next Status</bpmn:text>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0643g1k_di" bpmnElement="Flow_0643g1k">
-        <di:waypoint x="7019" y="1200" />
-        <di:waypoint x="7019" y="1285" />
-        <di:waypoint x="7795" y="1285" />
+        <di:waypoint x="7044" y="1175" />
+        <di:waypoint x="7795" y="1175" />
         <di:waypoint x="7795" y="967" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12p6tf3_di" bpmnElement="Flow_12p6tf3">
@@ -2385,9 +2390,9 @@ Output: Next Status</bpmn:text>
         <di:waypoint x="8745" y="1215" />
         <di:waypoint x="8745" y="1325" />
         <di:waypoint x="9025" y="1325" />
-        <di:waypoint x="9025" y="1415" />
+        <di:waypoint x="9025" y="1430" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="8927" y="1368" width="76" height="14" />
+          <dc:Bounds x="9042" y="1371" width="76" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0doa1pj_di" bpmnElement="Flow_0doa1pj">
@@ -2401,7 +2406,7 @@ Output: Next Status</bpmn:text>
         <di:waypoint x="8885" y="1215" />
         <di:waypoint x="8885" y="1325" />
         <di:waypoint x="9025" y="1325" />
-        <di:waypoint x="9025" y="1415" />
+        <di:waypoint x="9025" y="1430" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_051qyuy_di" bpmnElement="Flow_051qyuy">
         <di:waypoint x="8885" y="1215" />
@@ -2412,7 +2417,7 @@ Output: Next Status</bpmn:text>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_0xdhd0k" bpmnElement="Flow_1mp9b4r">
         <di:waypoint x="9025" y="1215" />
-        <di:waypoint x="9025" y="1415" />
+        <di:waypoint x="9025" y="1430" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0rhz5xw_di" bpmnElement="Flow_0rhz5xw">
         <di:waypoint x="9025" y="1215" />
@@ -2443,8 +2448,8 @@ Output: Next Status</bpmn:text>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_0hfpnx7" bpmnElement="Flow_13nv60m">
-        <di:waypoint x="8975" y="1455" />
-        <di:waypoint x="6619" y="1455" />
+        <di:waypoint x="8975" y="1470" />
+        <di:waypoint x="6619" y="1470" />
         <di:waypoint x="6619" y="1087" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0vgwvod_di" bpmnElement="Flow_0vgwvod">
@@ -2464,6 +2469,24 @@ Output: Next Status</bpmn:text>
       <bpmndi:BPMNEdge id="Flow_0d8qusb_di" bpmnElement="Flow_0d8qusb">
         <di:waypoint x="6468" y="1047" />
         <di:waypoint x="6569" y="1047" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09e2jnx_di" bpmnElement="Flow_09e2jnx">
+        <di:waypoint x="8620" y="1215" />
+        <di:waypoint x="8620" y="1250" />
+        <di:waypoint x="9000" y="1250" />
+        <di:waypoint x="9000" y="1215" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="8627" y="1256" width="75" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1lh4gk3_di" bpmnElement="Flow_1lh4gk3">
+        <di:waypoint x="6640" y="1087" />
+        <di:waypoint x="6640" y="1410" />
+        <di:waypoint x="9000" y="1410" />
+        <di:waypoint x="9000" y="1215" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="6652" y="1379" width="75" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_0oexowt_di" bpmnElement="Participant_0oexowt" isHorizontal="true">
         <dc:Bounds x="5805" y="1750" width="3390" height="1020" />
